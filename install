@@ -1,3 +1,4 @@
 #!/bin/bash
 
-ln ./karabiner/karabiner.edn ~/.config/karabiner.edn
+ln -s ./karabiner/karabiner.edn ~/.config/karabiner.edn
+ln -s "$(pwd)/.vimrc" ~/.vimrc

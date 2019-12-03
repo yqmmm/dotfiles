@@ -27,8 +27,8 @@
                  [:!T#O#Sk :up_arrow]
                  [:!T#O#Sh :left_arrow]
                  [:!T#O#Sl :right_arrow]
-                 [:!T#Og :delete_forward]
-                 [:!T#Of :delete_or_backspace]
+                ;  [:!T#Og :delete_forward]
+                ;  [:!T#Of :delete_or_backspace]
                  [:!Ti :!CSopen_bracket]
                  [:!To :!CSclose_bracket]
                  [:!Topen_bracket :!Oopen_bracket]
@@ -48,46 +48,47 @@
         ;          [:!To :!CSclose_bracket]]}
 
         ;; Layer Implementation
-        {:des "Space Fn"
-         :rules [
-                 [:spacebar ["space-layer" 1] nil {:afterup ["space-layer" 0] :alone :spacebar}]
-                 [:##1 :f1 ["space-layer" 1]]
-                 [:##2 :f2 ["space-layer" 1]]
-                 [:##3 :f3 ["space-layer" 1]]
-                 [:##4 :f4 ["space-layer" 1]]
-                 [:##5 :f5 ["space-layer" 1]]
-                 [:##6 :f6 ["space-layer" 1]]
-                 [:##7 :f7 ["space-layer" 1]]
-                 [:##8 :f8 ["space-layer" 1]]
-                 [:##9 :f9 ["space-layer" 1]]
-                 [:##0 :f10 ["space-layer" 1]]
-                 [:##hyphen :f11 ["space-layer" 1]]
-                 [:##equal_sign :f12 ["space-layer" 1]]
-                 [:j :down_arrow ["space-layer" 1]]
-                 [:k :up_arrow ["space-layer" 1]]
-                 [:h :left_arrow ["space-layer" 1]]
-                 [:l :right_arrow ["space-layer" 1]]
-                 [:i :!CSopen_bracket ["space-layer" 1]]
-        ]}]}
+        ; {:des "Space Fn"
+        ;  :rules [
+        ;          [:spacebar ["space-layer" 1] nil {:afterup ["space-layer" 0] :alone :spacebar}]
+        ;          [:##1 :f1 ["space-layer" 1]]
+        ;          [:##2 :f2 ["space-layer" 1]]
+        ;          [:##3 :f3 ["space-layer" 1]]
+        ;          [:##4 :f4 ["space-layer" 1]]
+        ;          [:##5 :f5 ["space-layer" 1]]
+        ;          [:##6 :f6 ["space-layer" 1]]
+        ;          [:##7 :f7 ["space-layer" 1]]
+        ;          [:##8 :f8 ["space-layer" 1]]
+        ;          [:##9 :f9 ["space-layer" 1]]
+        ;          [:##0 :f10 ["space-layer" 1]]
+        ;          [:##hyphen :f11 ["space-layer" 1]]
+        ;          [:##equal_sign :f12 ["space-layer" 1]]
+        ;          [:j :down_arrow ["space-layer" 1]]
+        ;          [:k :up_arrow ["space-layer" 1]]
+        ;          [:h :left_arrow ["space-layer" 1]]
+        ;          [:l :right_arrow ["space-layer" 1]]
+        ;          [:i :!CSopen_bracket ["space-layer" 1]]
+        ; ]}]}
 
         ;; Simplayer implementation
-        ; {:des "SpaceFn"
-        ;  :rules [:Space-Mode
-        ;          [:1 :f1]
-        ;          [:2 :f2]
-        ;          [:3 :f3]
-        ;          [:4 :f4]
-        ;          [:5 :f5]
-        ;          [:6 :f6]
-        ;          [:7 :f7]
-        ;          [:#C8 :f8]
-        ;          [:9 :f9]
-        ;          [:0 :f10]
-        ;          [:hyphen :f11]
-        ;          [:equal_sign :f12]
-        ;          [:j :down_arrow]
-        ;          [:k :up_arrow]
-        ;          [:h :left_arrow]
-        ;          [:l :right_arrow]
-        ;          [:i :!CSopen_bracket]
-        ;          [:o :!CSclose_bracket]]}]}
+        {:des "SpaceFn"
+         :rules [:Space-Mode
+                 [:1 :f1]
+                 [:2 :f2]
+                 [:3 :f3]
+                 [:4 :f4]
+                 [:5 :f5]
+                 [:6 :f6]
+                 [:7 :f7]
+                 [:##C8 :f8]
+                 [:9 :f9]
+                 [:0 :f10]
+                 [:hyphen :f11]
+                 [:equal_sign :f12]
+                 [:j :down_arrow]
+                 [:k :up_arrow]
+                 [:h :left_arrow]
+                 [:l :right_arrow]
+                 [:i :!CSopen_bracket]
+                 [:o :!CSclose_bracket]]}
+        ]}
