@@ -1,12 +1,11 @@
 let mapleader = "\<Space>"
 
-" For elevatorsaga
+" Copy whole file content
 command! Ca execute "%y+"
 
 " =============================================================================
 " # Keymap
 " =============================================================================
-"imap jj <Esc>
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
@@ -29,18 +28,21 @@ nmap <leader>w :w<CR>
 set wildchar=<Tab> wildmenu wildmode=full
 nnoremap <up> :bp<CR>
 nnoremap <down> :bn<CR>
+nnoremap <leader><leader> <c-^>
+" map <Leader><Leader> <Plug>(easymotion-prefix)
 
-nnoremap <leader><Tab> <c-^>
-
-map <Leader><Leader> <Plug>(easymotion-prefix)
+" Help Page
+" :cabbrev help tab help
+cabbrev help tab help
 
 " LeaderF
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_ShortcutF = "<C-p>"
-let g:Lf_ShortcutB = "<Leader>;"
+let g:Lf_ShortcutB = "<C-a>"
 noremap <leader>m :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>f :LeaderfRgInteractive<CR>
+noremap <leader>f :Leaderf rg<CR>
 let g:Lf_CommandMap = {'<C-J>': ['<C-J>', '<Down>'], '<C-K>': ['<C-K>', '<Up>']}
+let g:Lf_PreviewInPopup = 1
 
 " TagBar
 nmap <F7> :TagbarToggle<CR>
@@ -48,11 +50,18 @@ nmap <F7> :TagbarToggle<CR>
 " =============================================================================
 " # Editor settings
 " =============================================================================
+" Hybrid line number in different mode, see https://github.com/jeffkreeftmeijer/vim-numbertoggle
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+augroup END
+
 " vim-smooth-scroll
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 9, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 9, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 9, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 9, 4)<CR>
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 9, 2)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 9, 2)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 9, 4)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 9, 4)<CR>
 
 "autocmd BufWritePost ${MYVIMRC} source ${MYVIMRC}  " immediately source .vimrc
 set mouse=a
@@ -96,8 +105,8 @@ let NERDTreeWinPos="left"
 let NERDTreeQuitOnOpen=1
 let NERDTreeDirArrows=1
 " Open NERDTree on startup if no file is specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 let g:indent_guides_start_level=1
 let g:indent_guides_guide_size=1
@@ -127,17 +136,12 @@ inoremap <silent><expr> <c-.> coc#refresh()
 " Or use `complete_info` if your vim support it, like:
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Racer
-" set hidden
-" let g:racer_cmd = "/Users/Quack/.cargo/bin/racer"
-" let g:racer_experimental_completer = 1
-" " let g:racer_insert_paren = 1
-
 let g:rainbow_active = 1
 
 " Markdown
 " set concealcursor=i
 " set g:indentLine_concealcursor="nc"
+
 
 au BufNewFile,BufRead Dockerfile* set filetype=Dockerfile
 
@@ -148,10 +152,11 @@ call plug#begin('~/.vim/plugged')
 " Vim Enhancement
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'terryma/vim-smooth-scroll'
+" Plug 'terryma/vim-smooth-scroll'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
 Plug 'wakatime/vim-wakatime'
+Plug 'ybian/smartim'
 Plug 'brglng/vim-im-select', {'for': ['markdown', 'latex']}
 Plug 'tpope/vim-eunuch'
 
@@ -163,24 +168,30 @@ Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java', 'rust'] }
 " GUI Enhancement
 Plug 'itchyny/lightline.vim'
 Plug 'frazrepo/vim-rainbow'
+Plug 'airblade/vim-gitgutter'
 " Plug 'Yggdroot/indentLine'
-Plug 'ybian/smartim'
 
 " Fuzzy Finder
 Plug 'airblade/vim-rooter'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 " Language Specific
-Plug 'chiel92/vim-autoformat'
 Plug 'cespare/vim-toml'
-Plug 'rust-lang/rust.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'majutsushi/tagbar'
+" Plug 'chiel92/vim-autoformat'
+" Plug 'rust-lang/rust.vim'
+" Plug 'pangloss/vim-javascript'
 " Plug 'wlangstroth/vim-racket', { 'for': 'racket'}
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Plug 'racer-rust/vim-racer'
+Plug 'lervag/vimtex', { 'for': ['latex'] }
+let g:tex_flavor='latex'
+let g:vimtex_quickfix_mode=0
 
 " Plug 'nathangrigg/vim-beancount'
 call plug#end()
 
 filetype plugin indent on    " required
+
+runtime! userautoload/*.vim
