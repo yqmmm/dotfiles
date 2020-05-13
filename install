@@ -2,4 +2,4 @@
 
 ln -s ./karabiner/karabiner.edn ~/.config/karabiner.edn
 ln -s "$(pwd)/.vimrc" ~/.vimrc
-ln -s "$(pwd)/init.vim" ~/.config/nvim/init.vim
+ln -s "$(pwd)/nvim" ~/.config/nvim
