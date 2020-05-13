@@ -6,6 +6,9 @@ command! Ca execute "%y+"
 " =============================================================================
 " # Keymap
 " =============================================================================
+autocmd FileType tex nnoremap j gj
+autocmd FileType tex nnoremap k gk
+
 nnoremap <C-e> 2<C-e>
 nnoremap <C-y> 2<C-y>
 
@@ -29,7 +32,12 @@ set wildchar=<Tab> wildmenu wildmode=full
 nnoremap <up> :bp<CR>
 nnoremap <down> :bn<CR>
 nnoremap <leader><leader> <c-^>
-" map <Leader><Leader> <Plug>(easymotion-prefix)
+
+" tabs
+nnoremap <leader>i gT<CR>
+nnoremap <leader>o gt<CR>
+
+nnoremap <leader>l :silent make\|redraw!\|cc<CR>
 
 " Help Page
 " :cabbrev help tab help
@@ -41,6 +49,7 @@ let g:Lf_ShortcutF = "<C-p>"
 let g:Lf_ShortcutB = "<C-a>"
 noremap <leader>m :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>f :Leaderf rg<CR>
+noremap <leader>a :Leaderf cmdHistory<CR>
 let g:Lf_CommandMap = {'<C-J>': ['<C-J>', '<Down>'], '<C-K>': ['<C-K>', '<Up>']}
 let g:Lf_PreviewInPopup = 1
 
@@ -56,6 +65,8 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 augroup END
+
+" map <Leader><Leader> <Plug>(easymotion-prefix)
 
 " vim-smooth-scroll
 " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 9, 2)<CR>
