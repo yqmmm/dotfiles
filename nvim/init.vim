@@ -31,7 +31,6 @@ nmap <leader>w :w<CR>
 set wildchar=<Tab> wildmenu wildmode=full
 nnoremap <up> :bp<CR>
 nnoremap <down> :bn<CR>
-nnoremap <leader><leader> <c-^>
 
 " tabs
 nnoremap <leader>i gT<CR>
@@ -43,12 +42,17 @@ nnoremap <leader>l :silent make\|redraw!\|cc<CR>
 " :cabbrev help tab help
 cabbrev help tab help
 
+" let g:rooter_change_directory_for_non_project_files = 'current'
+
 " LeaderF
 let g:Lf_WindowPosition = 'popup'
+" let g:Lf_UseVersionControlTool = 0
+let g:Lf_ShowDevIcons = 0
 let g:Lf_ShortcutF = "<C-p>"
 let g:Lf_ShortcutB = "<C-a>"
 noremap <leader>m :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>f :Leaderf rg<CR>
+noremap <leader>b :Leaderf buffer<CR>
 noremap <leader>a :Leaderf cmdHistory<CR>
 let g:Lf_CommandMap = {'<C-J>': ['<C-J>', '<Down>'], '<C-K>': ['<C-K>', '<Up>']}
 let g:Lf_PreviewInPopup = 1
@@ -66,7 +70,6 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 augroup END
 
-" map <Leader><Leader> <Plug>(easymotion-prefix)
 
 " vim-smooth-scroll
 " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 9, 2)<CR>
@@ -104,6 +107,7 @@ set nofoldenable
 "set ruler
 "set cursorline
 
+au BufNewFile,BufRead Dockerfile* set filetype=Dockerfile
 
 " =============================================================================
 " # Plugin settings
@@ -153,8 +157,11 @@ let g:rainbow_active = 1
 " set concealcursor=i
 " set g:indentLine_concealcursor="nc"
 
+let g:tex_flavor='latex'
+let g:vimtex_quickfix_mode=0
+let g:vimtex_texcount_custom_arg='-incbib -ch'
 
-au BufNewFile,BufRead Dockerfile* set filetype=Dockerfile
+noremap <leader><CR> <c-^>
 
 " =============================================================================
 " # Plugin
@@ -172,9 +179,9 @@ Plug 'brglng/vim-im-select', {'for': ['markdown', 'latex']}
 Plug 'tpope/vim-eunuch'
 
 " Text Object
-Plug 'kana/vim-textobj-user'
-Plug 'sgur/vim-textobj-parameter'
-Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java', 'rust'] }
+" Plug 'kana/vim-textobj-user'
+" Plug 'sgur/vim-textobj-parameter'
+" Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java', 'rust'] }
 
 " GUI Enhancement
 Plug 'itchyny/lightline.vim'
@@ -197,9 +204,6 @@ Plug 'majutsushi/tagbar'
 " Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Plug 'racer-rust/vim-racer'
 Plug 'lervag/vimtex', { 'for': ['latex'] }
-let g:tex_flavor='latex'
-let g:vimtex_quickfix_mode=0
-
 " Plug 'nathangrigg/vim-beancount'
 call plug#end()
 
