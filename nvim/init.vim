@@ -1,8 +1,10 @@
 let mapleader = "\<Space>"
+let maplocalleader = "\\"
 
 " Copy whole file content
 command! Ca execute "%y+"
 
+let g:python3_host_prog = "/Users/Quack/.pyenv/versions/3.7.7/bin/python"
 " =============================================================================
 " # Keymap
 " =============================================================================
@@ -54,6 +56,7 @@ noremap <leader>m :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>f :Leaderf rg<CR>
 noremap <leader>b :Leaderf buffer<CR>
 noremap <leader>a :Leaderf cmdHistory<CR>
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
 let g:Lf_CommandMap = {'<C-J>': ['<C-J>', '<Down>'], '<C-K>': ['<C-K>', '<Up>']}
 let g:Lf_PreviewInPopup = 1
 
@@ -64,11 +67,11 @@ nmap <F7> :TagbarToggle<CR>
 " # Editor settings
 " =============================================================================
 " Hybrid line number in different mode, see https://github.com/jeffkreeftmeijer/vim-numbertoggle
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
-  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
-augroup END
+" augroup numbertoggle
+"   autocmd!
+"   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+"   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
+" augroup END
 
 
 " vim-smooth-scroll
@@ -157,11 +160,22 @@ let g:rainbow_active = 1
 " set concealcursor=i
 " set g:indentLine_concealcursor="nc"
 
+" vimtex
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_mode=0
-let g:vimtex_texcount_custom_arg='-incbib -ch'
+let g:vimtex_texcount_custom_arg='-incbib -ch' " include bibtex and count chinese characters
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \   '-shell-escape',
+    \ ],
+    \}
 
-noremap <leader><CR> <c-^>
+
+noremap <leader>j <c-^>
 
 " =============================================================================
 " # Plugin
@@ -205,6 +219,8 @@ Plug 'majutsushi/tagbar'
 " Plug 'racer-rust/vim-racer'
 Plug 'lervag/vimtex', { 'for': ['latex'] }
 " Plug 'nathangrigg/vim-beancount'
+
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 filetype plugin indent on    " required

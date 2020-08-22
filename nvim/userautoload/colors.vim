@@ -1,6 +1,8 @@
 " Use GUI colorsetting in TUI
 " set termguicolors
 
+colorscheme desert
+
 " vim-gitgutter
 " let g:gitgutter_signs = 0
 let g:gitgutter_enabled = 0

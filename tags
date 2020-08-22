@@ -1,0 +1,92 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/2ebf5b1/
+<BS>	nvim/ftplugin/help.vim	/^nnoremap <buffer> <BS> <C-T>$/;"	m
+<BS>	nvim/init.vim	/^nnoremap <BS> :nohlsearch<cr>$/;"	m
+<C-Left>	nvim/init.vim	/^nnoremap <C-Left> :tabprevious<CR>$/;"	m
+<C-Right>	nvim/init.vim	/^nnoremap <C-Right> :tabnext<CR>$/;"	m
+<C-e>	.vimrc	/^nnoremap <C-e> 2<C-e>$/;"	m
+<C-e>	nvim/init.vim	/^nnoremap <C-e> 2<C-e>$/;"	m
+<C-h>	.vimrc	/^nnoremap <C-h> :nohlsearch<cr>$/;"	m
+<C-h>	.vimrc	/^vnoremap <C-h> :nohlsearch<cr>$/;"	m
+<C-h>	nvim/init.vim	/^nnoremap <C-h> :nohlsearch<cr>$/;"	m
+<C-h>	nvim/init.vim	/^vnoremap <C-h> :nohlsearch<cr>$/;"	m
+<C-n>	.vimrc	/^map <C-n> :NERDTreeToggle<CR>$/;"	m
+<C-p>	.vimrc	/^map <C-p> :Files<CR>$/;"	m
+<C-y>	.vimrc	/^nnoremap <C-y> 2<C-y>$/;"	m
+<C-y>	nvim/init.vim	/^nnoremap <C-y> 2<C-y>$/;"	m
+<CR>	nvim/ftplugin/help.vim	/^nnoremap <buffer> <CR> <C-]>$/;"	m
+<F1>	nvim/init.vim	/^map <F1> :NERDTreeToggle<CR>$/;"	m
+<F7>	nvim/init.vim	/^nmap <F7> :TagbarToggle<CR>$/;"	m
+<Leader>	.vimrc	/^map <Leader> <Plug>(easymotion-prefix)$/;"	m
+<S-TAB>	nvim/init.vim	/^inoremap <expr><S-TAB> pumvisible() ? "\\<C-p>" : "\\<C-h>"$/;"	m
+<TAB>	nvim/init.vim	/^inoremap <silent><expr> <TAB>$/;"	m
+<c-.>	nvim/init.vim	/^inoremap <silent><expr> <c-.> coc#refresh()$/;"	m
+<c-b>	.vimrc	/^noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 9, 4)<CR>$/;"	m
+<c-d>	.vimrc	/^noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 9, 2)<CR>$/;"	m
+<c-f>	.vimrc	/^noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 9, 4)<CR>$/;"	m
+<c-u>	.vimrc	/^noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 9, 2)<CR>$/;"	m
+<cr>	nvim/init.vim	/^inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\\<C-y>" : "\\<C-g>u\\<CR>"$/;"	m
+<down>	.vimrc	/^nnoremap <down> :bn<CR>$/;"	m
+<down>	nvim/init.vim	/^nnoremap <down> :bn<CR>$/;"	m
+<leader>;	.vimrc	/^nmap <leader>; :Buffers<CR>$/;"	m
+<leader><leader>	.vimrc	/^nnoremap <leader><leader> <c-^>$/;"	m
+<leader>a	nvim/init.vim	/^noremap <leader>a :Leaderf cmdHistory<CR>$/;"	m
+<leader>b	nvim/init.vim	/^noremap <leader>b :Leaderf buffer<CR>$/;"	m
+<leader>f	nvim/init.vim	/^noremap <leader>f :Leaderf rg<CR>$/;"	m
+<leader>g	nvim/userautoload/colors.vim	/^noremap <leader>g :GitGutterToggle<CR>$/;"	m
+<leader>i	nvim/init.vim	/^nnoremap <leader>i gT<CR>$/;"	m
+<leader>j	nvim/init.vim	/^noremap <leader>j <c-^>$/;"	m
+<leader>l	nvim/init.vim	/^nnoremap <leader>l :silent make\\|redraw!\\|cc<CR>$/;"	m
+<leader>m	nvim/init.vim	/^noremap <leader>m :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>$/;"	m
+<leader>o	nvim/init.vim	/^nnoremap <leader>o gt<CR>$/;"	m
+<leader>w	nvim/init.vim	/^nmap <leader>w :w<CR>$/;"	m
+<left>	.vimrc	/^map <left> ^$/;"	m
+<left>	nvim/init.vim	/^map <left> ^$/;"	m
+<right>	.vimrc	/^map <right> \$$/;"	m
+<right>	nvim/init.vim	/^map <right> \$$/;"	m
+<up>	.vimrc	/^nnoremap <up> :bp<CR>$/;"	m
+<up>	nvim/init.vim	/^nnoremap <up> :bp<CR>$/;"	m
+Ca	nvim/init.vim	/^command! Ca execute "%y+"$/;"	c
+Karabiner	README.md	/^### Karabiner$/;"	S
+NERDTreeDirArrows	.vimrc	/^let NERDTreeDirArrows=1$/;"	v
+NERDTreeDirArrows	nvim/init.vim	/^let NERDTreeDirArrows=1$/;"	v
+NERDTreeQuitOnOpen	.vimrc	/^let NERDTreeQuitOnOpen=1$/;"	v
+NERDTreeQuitOnOpen	nvim/init.vim	/^let NERDTreeQuitOnOpen=1$/;"	v
+NERDTreeWinPos	.vimrc	/^let NERDTreeWinPos="right"$/;"	v
+NERDTreeWinPos	nvim/init.vim	/^let NERDTreeWinPos="left"$/;"	v
+O	nvim/ftplugin/help.vim	/^nnoremap <buffer> O ?'\\l\\{2,\\}'<CR>$/;"	m
+S	nvim/ftplugin/help.vim	/^nnoremap <buffer> S ?\\|\\zs\\S\\+\\ze\\|<CR>$/;"	m
+dotfiles	README.md	/^# dotfiles$/;"	c
+g:Lf_CommandMap	nvim/init.vim	/^let g:Lf_CommandMap = {'<C-J>': ['<C-J>', '<Down>'], '<C-K>': ['<C-K>', '<Up>']}$/;"	v
+g:Lf_PreviewInPopup	nvim/init.vim	/^let g:Lf_PreviewInPopup = 1$/;"	v
+g:Lf_ShortcutB	nvim/init.vim	/^let g:Lf_ShortcutB = "<C-a>"$/;"	v
+g:Lf_ShortcutF	nvim/init.vim	/^let g:Lf_ShortcutF = "<C-p>"$/;"	v
+g:Lf_ShowDevIcons	nvim/init.vim	/^let g:Lf_ShowDevIcons = 0$/;"	v
+g:Lf_WindowPosition	nvim/init.vim	/^let g:Lf_WindowPosition = 'popup'$/;"	v
+g:gitgutter_enabled	nvim/userautoload/colors.vim	/^let g:gitgutter_enabled = 0$/;"	v
+g:gitgutter_highlight_linenrs	nvim/userautoload/colors.vim	/^let g:gitgutter_highlight_linenrs=1$/;"	v
+g:indent_guides_enable_on_vim_startup	.vimrc	/^let g:indent_guides_enable_on_vim_startup=1$/;"	v
+g:indent_guides_enable_on_vim_startup	nvim/init.vim	/^let g:indent_guides_enable_on_vim_startup=1$/;"	v
+g:indent_guides_guide_size	.vimrc	/^let g:indent_guides_guide_size=1$/;"	v
+g:indent_guides_guide_size	nvim/init.vim	/^let g:indent_guides_guide_size=1$/;"	v
+g:indent_guides_start_level	.vimrc	/^let g:indent_guides_start_level=1$/;"	v
+g:indent_guides_start_level	nvim/init.vim	/^let g:indent_guides_start_level=1$/;"	v
+g:python3_host_prog	nvim/init.vim	/^let g:python3_host_prog = "\/Users\/Quack\/.pyenv\/versions\/3.7.7\/bin\/python"$/;"	v
+g:rainbow_active	nvim/init.vim	/^let g:rainbow_active = 1$/;"	v
+g:tex_flavor	nvim/init.vim	/^let g:tex_flavor='latex'$/;"	v
+g:vimtex_compiler_latexmk	nvim/init.vim	/^let g:vimtex_compiler_latexmk = {$/;"	v
+g:vimtex_quickfix_mode	nvim/init.vim	/^let g:vimtex_quickfix_mode=0$/;"	v
+g:vimtex_texcount_custom_arg	nvim/init.vim	/^let g:vimtex_texcount_custom_arg='-incbib -ch' " include bibtex and count chinese characters$/;"	v
+mapleader	.vimrc	/^let mapleader = "\\<Space>"$/;"	v
+mapleader	nvim/init.vim	/^let mapleader = "\\<Space>"$/;"	v
+maplocalleader	nvim/init.vim	/^let maplocalleader = "\\\\"$/;"	v
+numbertoggle	nvim/init.vim	/^augroup numbertoggle$/;"	a
+o	nvim/ftplugin/help.vim	/^nnoremap <buffer> o \/'\\l\\{2,\\}'<CR>$/;"	m
+s	nvim/ftplugin/help.vim	/^nnoremap <buffer> s \/\\|\\zs\\S\\+\\ze\\|<CR>$/;"	m
+s:check_back_space	nvim/init.vim	/^function! s:check_back_space() abort$/;"	f
