@@ -177,6 +177,36 @@ let g:vimtex_compiler_latexmk = {
 
 noremap <leader>j <c-^>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gutentags settings: enable for some dirs
+" (https://github.com/ludovicchabant/vim-gutentags/issues/82)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" let g:gutentags_enabled_dirs = []
+" let g:gutentags_enabled_user_func = 'CheckEnabledDirs'
+
+" function! CheckEnabledDirs(file)
+"     let file_path = fnamemodify(a:file, ':p:h')
+
+"     try
+"         let gutentags_root = gutentags#get_project_root(file_path)
+"         if filereadable(gutentags_root . '/.withtags')
+"             return 1
+"         endif
+"     catch
+"     endtry
+
+"     for enabled_dir in g:gutentags_enabled_dirs
+"         let enabled_path = fnamemodify(enabled_dir, ':p:h')
+
+"         if match(file_path, enabled_path) == 0
+"             return 1
+"         endif
+"     endfor
+
+"     return 0
+" endfunction
+
 " =============================================================================
 " # Plugin
 " =============================================================================
@@ -219,8 +249,9 @@ Plug 'majutsushi/tagbar'
 " Plug 'racer-rust/vim-racer'
 Plug 'lervag/vimtex', { 'for': ['latex'] }
 " Plug 'nathangrigg/vim-beancount'
+Plug 'nathangrigg/vim-beancount'
 
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 filetype plugin indent on    " required
