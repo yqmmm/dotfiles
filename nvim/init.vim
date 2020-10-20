@@ -4,7 +4,8 @@ let maplocalleader = "\\"
 " Copy whole file content
 command! Ca execute "%y+"
 
-let g:python3_host_prog = "/Users/Quack/.pyenv/versions/3.7.7/bin/python"
+let g:python3_host_prog = "/Users/Quack/.asdf/shims/python"
+"
 " =============================================================================
 " # Keymap
 " =============================================================================
@@ -176,6 +177,9 @@ let g:vimtex_compiler_latexmk = {
 
 
 noremap <leader>j <c-^>
+
+" Beancount
+inoremap <F5> <C-R>=strftime("%F")<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gutentags settings: enable for some dirs
