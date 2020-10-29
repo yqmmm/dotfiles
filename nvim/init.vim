@@ -39,6 +39,10 @@ nnoremap <down> :bn<CR>
 nnoremap <leader>i gT<CR>
 nnoremap <leader>o gt<CR>
 
+" clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+
 nnoremap <leader>l :silent make\|redraw!\|cc<CR>
 
 " Help Page
@@ -98,7 +102,7 @@ set hlsearch		      " highlight render search result, use :noh to close
 set incsearch		      " search in real time
 set ignorecase		      " search ignore case
 set wildmenu		      " vim command auto complete
-set clipboard=unnamed
+" set clipboard=unnamed
 set ts=4 sw=4 et
 set laststatus=2
 set number
@@ -178,7 +182,7 @@ let g:vimtex_compiler_latexmk = {
 
 noremap <leader>j <c-^>
 
-" Beancount
+" Beancount shortcut
 inoremap <F5> <C-R>=strftime("%F")<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
