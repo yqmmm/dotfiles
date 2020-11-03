@@ -3,3 +3,8 @@
 ln -si ./karabiner/karabiner.edn ~/.config/karabiner.edn
 ln -si "$(pwd)/.vimrc" ~/.vimrc
 ln -si "$(pwd)/nvim" ~/.config/nvim
+
+git config --global user.email "im.qianmian.yu@gmail.com"
+git config --global user.name  "Qianmian Yu"
+git config --global pull.rebase true
+git config --global credential.helper store
