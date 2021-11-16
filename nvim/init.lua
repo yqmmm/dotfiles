@@ -47,6 +47,8 @@ vim.g.updatetime = 500
 
 utils.nnoremap('<leader>j', '<c-^>')
 
+vim.o.cursorline = true
+
 -- Plugins
 vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function()
