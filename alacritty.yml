@@ -830,33 +830,18 @@ key_bindings:
   # - { key: N,     mods: Command, action: CreateNewWindow }
   #- { key: K,              mods: Command, mode: ~Vi|~Search, chars: "\x0c"                 }
   #- { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
-  - { key: Key0,  mods: Command, action: ResetFontSize }
+  - {key: Key0, mods: Command, action: ResetFontSize}
   #- { key: Equals,         mods: Command,                    action: IncreaseFontSize      }
-  - { key: Plus,  mods: Command, action: IncreaseFontSize }
+  - {key: Plus, mods: Command, action: IncreaseFontSize}
   #- { key: NumpadAdd,      mods: Command,                    action: IncreaseFontSize      }
-  - { key: Minus, mods: Command, action: DecreaseFontSize }
-  #- { key: NumpadSubtract, mods: Command,                    action: DecreaseFontSize      }
-  #- { key: V,              mods: Command,                    action: Paste                 }
-  #- { key: C,              mods: Command,                    action: Copy                  }
-  #- { key: C,              mods: Command, mode: Vi|~Search,  action: ClearSelection        }
-  #- { key: H,              mods: Command,                    action: Hide                  }
-  #- { key: H,              mods: Command|Alt,                action: HideOtherApplications }
-  #- { key: M,              mods: Command,                    action: Minimize              }
-  #- { key: Q,              mods: Command,                    action: Quit                  }
-  #- { key: W,              mods: Command,                    action: Quit                  }
-  #- { key: N,              mods: Command,                    action: SpawnNewInstance      }
-  #- { key: F,              mods: Command|Control,            action: ToggleFullscreen      }
-  #- { key: F,              mods: Command, mode: ~Search,     action: SearchForward         }
-  #- { key: B,              mods: Command, mode: ~Search,     action: SearchBackward        }
-
-  # (Tmux, with key bindings from https://github.com/gpakosz/.tmux)
-  - { key: T, mods: Command, Chars: "\x01\x63" } # Create new tab
-  - { key: LBracket,  mods: Command|Shift, Chars: "\x01\x1b\x5b\x44"} # Left Window
-  - { key: RBracket,  mods: Command|Shift, Chars: "\x01\x1b\x5b\x43"} # Right Window
-  - { key: H,         mods: Command,       Chars: "\x01\x68" }
-  - { key: L,         mods: Command,       Chars: "\x01\x6c" }
-  - { key: J,         mods: Command,       Chars: "\x01\x6a" }
-  - { key: K,         mods: Command,       Chars: "\x01\x6b" }
+  - {key: Minus, mods: Command, action: DecreaseFontSize}
+  - {key: T, mods: Command, Chars: "\x01c"}      # Create new tab
+  - {key: LBracket, mods: Command|Shift, Chars: "\x01\e[D"}           # Left Window
+  - {key: RBracket, mods: Command|Shift, Chars: "\x01\e[C"}           # Right Window
+  - {key: H, mods: Command, Chars: "\x01h"}
+  - {key: L, mods: Command, Chars: "\x01l"}
+  - {key: J, mods: Command, Chars: "\x01j"}
+  - {key: K, mods: Command, Chars: "\x01k"}
 
 #debug:
   # Display the time it takes to redraw each frame.
@@ -879,35 +864,36 @@ key_bindings:
   # Print all received window events.
   #print_events: false
 colors:
-  # COLORSCHEME: papercolor_light.yaml
+  # COLORSCHEME: tender.yaml
   # Default colors
   primary:
     # hard contrast: background = '0xf9f5d7'
-    background: '0xeeeeee'
-    foreground: '0x878787'
+    background: '0x282828'
+    foreground: '0xeeeeee'
 
+  # Normal colors
   cursor:
     text: '0xeeeeee'
     cursor: '0x878787'
 
   # Normal colors
   normal:
-    black: '0xeeeeee'
-    red: '0xaf0000'
-    green: '0x008700'
-    yellow: '0x5f8700'
-    blue: '0x0087af'
-    magenta: '0x878787'
-    cyan: '0x005f87'
-    white: '0x444444'
+    black: '0x282828'
+    red: '0xf43753'
+    green: '0xc9d05c'
+    yellow: '0xffc24b'
+    blue: '0xb3deef'
+    magenta: '0xd3b987'
+    cyan: '0x73cef4'
+    white: '0xeeeeee'
 
   # Bright colors
   bright:
-    black: '0xbcbcbc'
-    red: '0xd70000'
-    green: '0xd70087'
-    yellow: '0x8700af'
-    blue: '0xd75f00'
-    magenta: '0xd75f00'
-    cyan: '0x005faf'
-    white: '0x005f87'
+    black: '0x4c4c4c'
+    red: '0xf43753'
+    green: '0xc9d05c'
+    yellow: '0xffc24b'
+    blue: '0xb3deef'
+    magenta: '0xd3b987'
+    cyan: '0x73cef4'
+    white: '0xfeffff'
