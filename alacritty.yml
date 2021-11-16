@@ -838,10 +838,12 @@ key_bindings:
   - {key: T, mods: Command, Chars: "\x01c"}      # Create new tab
   - {key: LBracket, mods: Command|Shift, Chars: "\x01\e[D"}           # Left Window
   - {key: RBracket, mods: Command|Shift, Chars: "\x01\e[C"}           # Right Window
-  - {key: H, mods: Command|Shift, Chars: "\x01h"}
-  - {key: L, mods: Command|Shift, Chars: "\x01l"}
-  - {key: J, mods: Command|Shift, Chars: "\x01j"}
-  - {key: K, mods: Command|Shift, Chars: "\x01k"}
+  - {key: H, mods: Command|Shift,        Chars: "\x01h"}
+  - {key: L, mods: Command|Shift,        Chars: "\x01l"}
+  - {key: J, mods: Command|Shift,        Chars: "\x01j"}
+  - {key: K, mods: Command|Shift,        Chars: "\x01k"}
+  - {key: D, mods: Command,              Chars: "\x01-"}
+  - {key: D, mods: Command|Shift,        Chars: "\x01_"}
 
 #debug:
   # Display the time it takes to redraw each frame.
