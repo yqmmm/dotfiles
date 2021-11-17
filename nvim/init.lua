@@ -164,7 +164,7 @@ end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 -- local servers = { 'pyright', 'gopls', 'clangd', 'pylsp' }
-local servers = { 'gopls', 'clangd', 'pylsp' }
+local servers = { 'gopls', 'pylsp' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     autostart = false,
@@ -177,6 +177,15 @@ nvim_lsp.rust_analyzer.setup {
   autostart = false,
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+nvim_lsp.ccls.setup {
+  autostart = false,
+  on_attach = on_attach,
+  capabilities = capabilities,
+  init_options = {
+    compilationDatabaseDirectory = "build";
+  }
 }
 
 -- Set completeopt to have a better completion experience
@@ -254,7 +263,7 @@ require('telescope').setup {
 
 -- TreeSitter Settings
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml"},
+  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "nix"},
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
