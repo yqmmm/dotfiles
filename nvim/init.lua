@@ -107,7 +107,7 @@ end)
 
 -- ===== colorsheme settings =====
 vim.o.termguicolors = true
--- vim.cmd("colorscheme tender")
+vim.cmd("colorscheme PaperColor")
 vim.g.lightline = { colorscheme = 'tender' }
 
 require('dark_notify').run({
