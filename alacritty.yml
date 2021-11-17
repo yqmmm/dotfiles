@@ -838,12 +838,12 @@ key_bindings:
   - {key: T, mods: Command, Chars: "\x01c"}      # Create new tab
   - {key: LBracket, mods: Command|Shift, Chars: "\x01\e[D"}           # Left Window
   - {key: RBracket, mods: Command|Shift, Chars: "\x01\e[C"}           # Right Window
-  - {key: H, mods: Command|Shift,        Chars: "\x01h"}
-  - {key: L, mods: Command|Shift,        Chars: "\x01l"}
-  - {key: J, mods: Command|Shift,        Chars: "\x01j"}
-  - {key: K, mods: Command|Shift,        Chars: "\x01k"}
-  - {key: D, mods: Command,              Chars: "\x01-"}
-  - {key: D, mods: Command|Shift,        Chars: "\x01_"}
+  - {key: H, mods: Command|Shift, Chars: "\x01h"}
+  - {key: L, mods: Command|Shift, Chars: "\x01l"}
+  - {key: J, mods: Command|Shift, Chars: "\x01j"}
+  - {key: K, mods: Command|Shift, Chars: "\x01k"}
+  - {key: D, mods: Command|Shift, Chars: "\x01-"}
+  - {key: D, mods: Command, Chars: "\x01_"}
 
 #debug:
   # Display the time it takes to redraw each frame.
@@ -866,36 +866,35 @@ key_bindings:
   # Print all received window events.
   #print_events: false
 colors:
-  # COLORSCHEME: tender.yaml
+  # COLORSCHEME: papercolor_light.yaml
   # Default colors
   primary:
     # hard contrast: background = '0xf9f5d7'
-    background: '0x282828'
-    foreground: '0xeeeeee'
+    background: '0xeeeeee'
+    foreground: '0x878787'
 
-  # Normal colors
   cursor:
     text: '0xeeeeee'
     cursor: '0x878787'
 
   # Normal colors
   normal:
-    black: '0x282828'
-    red: '0xf43753'
-    green: '0xc9d05c'
-    yellow: '0xffc24b'
-    blue: '0xb3deef'
-    magenta: '0xd3b987'
-    cyan: '0x73cef4'
-    white: '0xeeeeee'
+    black: '0xeeeeee'
+    red: '0xaf0000'
+    green: '0x008700'
+    yellow: '0x5f8700'
+    blue: '0x0087af'
+    magenta: '0x878787'
+    cyan: '0x005f87'
+    white: '0x444444'
 
   # Bright colors
   bright:
-    black: '0x4c4c4c'
-    red: '0xf43753'
-    green: '0xc9d05c'
-    yellow: '0xffc24b'
-    blue: '0xb3deef'
-    magenta: '0xd3b987'
-    cyan: '0x73cef4'
-    white: '0xfeffff'
+    black: '0xbcbcbc'
+    red: '0xd70000'
+    green: '0xd70087'
+    yellow: '0x8700af'
+    blue: '0xd75f00'
+    magenta: '0xd75f00'
+    cyan: '0x005faf'
+    white: '0x005f87'
