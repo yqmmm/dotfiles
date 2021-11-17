@@ -844,6 +844,8 @@ key_bindings:
   - {key: K, mods: Command|Shift, Chars: "\x01k"}
   - {key: D, mods: Command|Shift, Chars: "\x01-"}
   - {key: D, mods: Command, Chars: "\x01_"}
+  # Disable Command-W that closes alacritty
+  - {key: W, mods: Command,       action: None}
 
 #debug:
   # Display the time it takes to redraw each frame.

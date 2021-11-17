@@ -112,10 +112,8 @@ vim.g.lightline = { colorscheme = 'tender' }
 
 require('dark_notify').run({
     schemes = {
-      -- you can use a different colorscheme for each
-      dark  = {
+      dark = {
 	    colorscheme = "tender",
-		-- lightline=  "tender",
 	  },
       light = {
         colorscheme = "PaperColor",
