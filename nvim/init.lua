@@ -65,6 +65,11 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-buffer' -- cmp buffer source
   use 'hrsh7th/cmp-path' -- cmp path source
 
+  -- Copilot
+  if vim.fn.exists('nvim-0.6') == 1 then
+    use 'github/copilot.vim'
+  end
+
   -- Syntax Highlight
   use {
     'nvim-treesitter/nvim-treesitter',
@@ -197,6 +202,9 @@ nvim_lsp.ccls.setup {
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+-- luasnip setup
+local luasnip = require 'luasnip'
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
@@ -286,3 +294,15 @@ require'nvim-treesitter.configs'.setup {
 -- nvim-tree.lua
 require 'nvim-tree'.setup {}
 utils.nnoremap('<C-n>', ':NvimTreeToggle<CR>')
+
+
+-- copilot.vim
+if vim.fn.exists('nvim-0.6') == 1 then
+  local opts = {
+    silent = true,
+    script = true,
+    expr = true,
+  }
+  vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("\\<CR>")', opts)
+  vim.g.copilot_no_tab_map = 'v:true'
+end
