@@ -98,6 +98,9 @@ require('packer').startup(function()
   use 'NLKNguyen/papercolor-theme'
   use 'cormacrelf/dark-notify'
 
+  -- Clipboard
+  use 'ojroques/vim-oscyank'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
