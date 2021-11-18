@@ -263,7 +263,7 @@ require('telescope').setup {
 
 -- TreeSitter Settings
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "nix"},
+  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "json", "nix"},
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
