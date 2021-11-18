@@ -157,7 +157,10 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gvd', ':only<CR>:vsplit<CR>gd', { silent=true }) -- TODO: Would be better to use lua
+  -- TODO: Would be better to use lua
+  -- Like this: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
+  -- But without overriding old gd
+  buf_set_keymap('n', 'gvd', ':only<CR>:vsplit<CR>gd', { silent=true })
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -259,6 +262,7 @@ utils.nnoremap('<leader>ch', '<cmd>Telescope command_history<cr>')
 utils.nnoremap('<leader>l', '<cmd>Telescope live_grep<cr>')
 utils.nnoremap('<leader>z', '<cmd>Telescope resume<cr>')
 utils.nnoremap('<leader>pp', '<cmd>Telescope grep_string<cr>')
+utils.nnoremap('<leader>cp', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>')
 utils.noremap('','<F1>', '<cmd>Telescope help_tags<cr>')
 
 require('telescope').setup {
