@@ -63,6 +63,7 @@ require('packer').startup(function()
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'hrsh7th/cmp-buffer' -- cmp buffer source
+  use 'hrsh7th/cmp-path' -- cmp path source
 
   -- Syntax Highlight
   use {
@@ -86,7 +87,6 @@ require('packer').startup(function()
    use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
-    -- config = function() require'nvim-tree'.setup {} end
   }
 
   -- Git
@@ -242,6 +242,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'buffer' },
+    { name = 'path' },
   },
 }
 

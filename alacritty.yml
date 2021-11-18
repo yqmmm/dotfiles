@@ -846,7 +846,7 @@ key_bindings:
   - {key: D, mods: Command, Chars: "\x06v"}
   # Disable Command-W that closes alacritty
   - {key: W, mods: Command, action: None}
-  - {key: Slash, mods: Command, Chars: "gcc"}
+  - {key: Slash, mods: Command, Chars: gcc}
 
 #debug:
   # Display the time it takes to redraw each frame.
@@ -869,35 +869,36 @@ key_bindings:
   # Print all received window events.
   #print_events: false
 colors:
-  # COLORSCHEME: papercolor_light.yaml
+  # COLORSCHEME: tender.yaml
   # Default colors
   primary:
     # hard contrast: background = '0xf9f5d7'
-    background: '0xeeeeee'
-    foreground: '0x878787'
+    background: '0x282828'
+    foreground: '0xeeeeee'
 
+  # Normal colors
   cursor:
     text: '0xeeeeee'
     cursor: '0x878787'
 
   # Normal colors
   normal:
-    black: '0xeeeeee'
-    red: '0xaf0000'
-    green: '0x008700'
-    yellow: '0x5f8700'
-    blue: '0x0087af'
-    magenta: '0x878787'
-    cyan: '0x005f87'
-    white: '0x444444'
+    black: '0x282828'
+    red: '0xf43753'
+    green: '0xc9d05c'
+    yellow: '0xffc24b'
+    blue: '0xb3deef'
+    magenta: '0xd3b987'
+    cyan: '0x73cef4'
+    white: '0xeeeeee'
 
   # Bright colors
   bright:
-    black: '0xbcbcbc'
-    red: '0xd70000'
-    green: '0xd70087'
-    yellow: '0x8700af'
-    blue: '0xd75f00'
-    magenta: '0xd75f00'
-    cyan: '0x005faf'
-    white: '0x005f87'
+    black: '0x4c4c4c'
+    red: '0xf43753'
+    green: '0xc9d05c'
+    yellow: '0xffc24b'
+    blue: '0xb3deef'
+    magenta: '0xd3b987'
+    cyan: '0x73cef4'
+    white: '0xfeffff'
