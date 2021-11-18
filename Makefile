@@ -13,12 +13,12 @@ nvim:
 
 tmux:
 	# Use https://github.com/gpakosz/.tmux
-	[ -d ~/.tmux ] || git clone https://github.com/gpakosz/.tmux.git $(HOME)/.tmux
-	ln -s -f $(HOME)/.tmux/.tmux.conf $(HOME)/.tmux.conf
-	[ -f ~/.tmux.conf.local ] || ln -s $(PWD)/tmux.conf.local ~/.tmux.conf.local
+	# [ -d ~/.tmux ] || git clone https://github.com/gpakosz/.tmux.git $(HOME)/.tmux
+	# ln -s -f $(HOME)/.tmux/.tmux.conf $(HOME)/.tmux.conf
+	# [ -f ~/.tmux.conf.local ] || ln -s $(PWD)/tmux.conf.local ~/.tmux.conf.local
 	# Use Tmux Plugin Manager
 	mkdir -p ~/.tmux/plugins
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	[ -f ~/.config/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
+	[ -d ~/.tmux/plugins/tpm] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
 
 .PHONY: all install alacritty nvim tmux
