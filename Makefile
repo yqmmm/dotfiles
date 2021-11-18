@@ -18,7 +18,7 @@ tmux:
 	# [ -f ~/.tmux.conf.local ] || ln -s $(PWD)/tmux.conf.local ~/.tmux.conf.local
 	# Use Tmux Plugin Manager
 	mkdir -p ~/.tmux/plugins
-	[ -d ~/.tmux/plugins/tpm] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	[ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
 
 .PHONY: all install alacritty nvim tmux
