@@ -37,8 +37,9 @@ utils.nnoremap('<right>', '$')
 utils.nnoremap('<leader>i', 'gT<CR>')
 utils.nnoremap('<leader>o', 'gt<CR>')
 -- Clipboard
-utils.noremap('v', '<leader>y', '"*y')
 utils.noremap('v', '<leader>p', '"*p')
+-- utils.noremap('v', '<leader>y', '"*y')
+utils.noremap('v', '<leader>y', ':OSCYank<CR>')
 -- Split in reasonable positions
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -108,9 +109,10 @@ require('packer').startup(function()
   end
 end)
 
--- ===== colorsheme settings =====
+-- ===== Colorsheme Settings =====
 vim.o.termguicolors = true
 vim.cmd("colorscheme PaperColor")
+vim.o.background = 'light'
 vim.g.lightline = { colorscheme = 'tender' }
 
 require('dark_notify').run({
@@ -249,7 +251,7 @@ utils.nnoremap('<leader>h', '<cmd>Telescope oldfiles<cr>')
 utils.nnoremap('<leader>cc', '<cmd>Telescope commands<cr>')
 utils.nnoremap('<leader>ch', '<cmd>Telescope command_history<cr>')
 utils.nnoremap('<leader>l', '<cmd>Telescope live_grep<cr>')
-utils.nnoremap('<leader>z', '<cmd>Telescope spell_suggest<cr>')
+utils.nnoremap('<leader>z', '<cmd>Telescope resume<cr>')
 utils.nnoremap('<leader>pp', '<cmd>Telescope grep_string theme=dropdown<cr>')
 utils.noremap('','<F1>', '<cmd>Telescope help_tags<cr>')
 
