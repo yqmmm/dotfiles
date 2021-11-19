@@ -31,8 +31,10 @@ vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 -- Left Key & Right Key
-utils.nnoremap('<left>', '^')
-utils.nnoremap('<right>', '$')
+utils.noremap('v', '<left>', '^')
+utils.noremap('v', '<right>', '$')
+utils.noremap('n', '<left>', '^')
+utils.noremap('n', '<right>', '$')
 -- Switch Tab
 utils.nnoremap('<leader>i', 'gT<CR>')
 utils.nnoremap('<leader>o', 'gt<CR>')
@@ -175,7 +177,7 @@ end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 -- local servers = { 'pyright', 'gopls', 'clangd', 'pylsp' }
-local servers = { 'gopls', 'pylsp' }
+local servers = { 'gopls', 'pylsp', 'rnix', 'solargraph', 'rust_analyzer' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     autostart = false,
@@ -183,12 +185,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
-nvim_lsp.rust_analyzer.setup {
-  autostart = false,
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
 
 nvim_lsp.ccls.setup {
   autostart = false,
@@ -208,17 +204,17 @@ local luasnip = require 'luasnip'
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
-  -- completion = {
-  --   autocomplete = false
-  -- },
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
+-- completion = {
+--   autocomplete = false
+-- },
+snippet = {
+  expand = function(args)
+    require('luasnip').lsp_expand(args.body)
+  end,
+},
+mapping = {
+  ['<C-p>'] = cmp.mapping.select_prev_item(),
+  ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -262,7 +258,7 @@ utils.nnoremap('<leader>cc', '<cmd>Telescope commands<cr>')
 utils.nnoremap('<leader>ch', '<cmd>Telescope command_history<cr>')
 utils.nnoremap('<leader>l', '<cmd>Telescope live_grep<cr>')
 utils.nnoremap('<leader>z', '<cmd>Telescope resume<cr>')
-utils.nnoremap('<leader>pp', '<cmd>Telescope grep_string theme=dropdown<cr>')
+utils.nnoremap('<leader>pp', '<cmd>Telescope grep_string<cr>')
 utils.noremap('','<F1>', '<cmd>Telescope help_tags<cr>')
 
 require('telescope').setup {
@@ -294,7 +290,7 @@ require'nvim-treesitter.configs'.setup {
 -- nvim-tree.lua
 require 'nvim-tree'.setup {}
 utils.nnoremap('<C-n>', ':NvimTreeToggle<CR>')
-
+utils.nnoremap('<leader>n', ':NvimTreeFindFile<CR>')
 
 -- copilot.vim
 if vim.fn.has('nvim-0.6') == 1 then
