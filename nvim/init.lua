@@ -79,7 +79,7 @@ require('packer').startup(function()
   -- Core Enhancement
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
-  use {'wakatime/vim-wakatime', event = 'VimEnter'}
+  use {'wakatime/vim-wakatime'}
   use {'dstein64/vim-startuptime',  opt=true}
 
   -- Fuzzy Finder
@@ -307,3 +307,6 @@ if vim.fn.has('nvim-0.6') == 1 then
   vim.g.copilot_no_tab_map = true
   vim.g.copilot_assume_mapped = false
 end
+
+-- wakatime
+vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('readlink `which wakatime-cli`'), '[\n\r]', '')
