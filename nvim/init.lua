@@ -66,7 +66,7 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-path' -- cmp path source
 
   -- Copilot
-  if vim.fn.exists('nvim-0.6') == 1 then
+  if vim.fn.has('nvim-0.6') == 1 then
     use 'github/copilot.vim'
   end
 
@@ -297,12 +297,13 @@ utils.nnoremap('<C-n>', ':NvimTreeToggle<CR>')
 
 
 -- copilot.vim
-if vim.fn.exists('nvim-0.6') == 1 then
-  local opts = {
-    silent = true,
-    script = true,
-    expr = true,
-  }
-  vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("\\<CR>")', opts)
-  vim.g.copilot_no_tab_map = 'v:true'
+if vim.fn.has('nvim-0.6') == 1 then
+  -- local opts = {
+  --   silent = true,
+  --   script = true,
+  --   expr = true,
+  -- }
+  -- vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("\\<CR>")', opts)
+  vim.g.copilot_no_tab_map = true
+  vim.g.copilot_assume_mapped = false
 end
