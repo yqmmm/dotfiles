@@ -314,4 +314,4 @@ if vim.fn.has('nvim-0.6') == 1 then
 end
 
 -- wakatime
-vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('readlink `which wakatime-cli`'), '[\n\r]', '')
+vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r]', '')
