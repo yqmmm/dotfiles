@@ -38,6 +38,11 @@ utils.noremap('n', '<right>', '$')
 -- Switch Tab
 utils.nnoremap('<leader>i', 'gT<CR>')
 utils.nnoremap('<leader>o', 'gt<CR>')
+-- Switch Panes
+utils.nnoremap('<S-Left>', '<C-w>h')
+utils.nnoremap('<S-Right>', '<C-w>l')
+utils.nnoremap('<S-Down>', '<C-w>j')
+utils.nnoremap('<S-Up>', '<C-w>k')
 -- Clipboard
 utils.noremap('v', '<leader>p', '"*p')
 -- utils.noremap('v', '<leader>y', '"*y')
