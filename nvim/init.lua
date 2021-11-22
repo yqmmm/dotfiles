@@ -106,7 +106,7 @@ require('packer').startup(function()
   use 'airblade/vim-gitgutter'
 
   -- UI Enhancement & Themes
-  use 'itchyny/lightline.vim'
+  use 'nvim-lualine/lualine.nvim'
   use 'jacoborus/tender.vim'
   use 'NLKNguyen/papercolor-theme'
   use 'cormacrelf/dark-notify'
@@ -125,7 +125,18 @@ end)
 vim.o.termguicolors = true
 vim.cmd("colorscheme PaperColor")
 vim.o.background = 'light'
-vim.g.lightline = { colorscheme = 'tender' }
+
+require'lualine'.setup ({
+  sections = {
+    lualine_c = {
+      {
+        'filename',
+        path = 1,
+      }
+    },
+    lualine_x = {'filetype'},
+  }
+})
 
 require('dark_notify').run({
     schemes = {
