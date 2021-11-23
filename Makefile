@@ -21,4 +21,7 @@ tmux:
 	[ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
 
-.PHONY: all install alacritty nvim tmux
+fzf:
+	[-d ~/.fzf ] || (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install)
+
+.PHONY: all install alacritty nvim tmux fzf
