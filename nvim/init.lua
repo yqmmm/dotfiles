@@ -51,7 +51,7 @@ utils.noremap('v', '<leader>y', ':OSCYank<CR>')
 vim.o.splitright = true
 vim.o.splitbelow = true
 -- Update quicker (mainly for git-gutter)
-vim.g.updatetime = 500
+vim.g.updatetime = 100
 
 utils.nnoremap('<leader>j', '<c-^>')
 
@@ -295,7 +295,7 @@ require('telescope').setup {
 
 -- TreeSitter Settings
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "json", "nix"},
+  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby"},
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
