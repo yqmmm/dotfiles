@@ -24,4 +24,8 @@ tmux:
 fzf:
 	[-d ~/.fzf ] || (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install)
 
-.PHONY: all install alacritty nvim tmux fzf
+karabiner:
+	mkdir -p ~/.config/
+	[ -f ~/.config/karabiner.edn ] || ln -s $(PWD)/karabiner.edn ~/.config/karabiner.edn
+
+.PHONY: all install alacritty nvim tmux fzf karabiner
