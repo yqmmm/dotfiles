@@ -1,0 +1,77 @@
+    ;; !  | means mandatory
+    ;; #  | means optional
+    ;; C  | left_command
+    ;; T  | left_control
+    ;; O  | left_option
+    ;; S  | left_shift
+    ;; F  | fn
+    ;; Q  | right_command
+    ;; W  | right_control
+    ;; E  | right_option
+    ;; R  | right_shift
+    ;; !! | mandatory command + control + optional + shift (hyper)
+    ;; ## | optional any
+
+{:applications {:vim-mode-disabled-application ["^com\\.apple\\.Terminal$",
+                                                "^com\\.googlecode\\.iterm2$",
+                                                "^io\\.alacritty$",
+                                                "^org\\.vim\\.",
+                                                "^com\\.qvacua\\.VimR$"]}
+ ; :simlayers {:Space-Mode {:key :spacebar}}
+ :simlayer-threshold 300
+;  :profiles {:vi-mode-default-profile {:default true}}
+ :main [{:des "Vim Mode"
+         :rules [
+                ;  [:condi :!vim-mode-disabled-application]
+                 [:!T#O#Sj :down_arrow]
+                 [:!T#O#Sk :up_arrow]
+                 [:!T#O#Sh :left_arrow]
+                 [:!T#O#Sl :right_arrow]
+                ;  [:!T#Og :delete_forward]
+                ;  [:!T#Of :delete_or_backspace]
+                 [:!Ti :!CSopen_bracket]
+                 [:!To :!CSclose_bracket]
+                 [:!Topen_bracket :!Tleft_arrow]
+                 [:!Tclose_bracket :!Tright_arrow]
+                 ]}
+        {:des "Magical Control"
+         :rules [
+                 [:##left_control [{:key left_control :lazy true}] nil {:alone :escape}]
+                 [:tab [{:key right_control :lazy true}] nil {:alone :tab}]
+                ]}
+        ; {:des "Magical Shift"
+        ;  :rules [[:##left_shift [{:key left_shift :lazy true}] nil {:alone :!S9 :params {:alone 300}}]
+        ;          [:##right_shift [{:key right_shift :lazy true}] nil {:alone :!S0 :params {:alone 300}}]]}
+        {:des "f+j to change input source"
+         :rules [[[:f :j] :!COi nil {:params {:sim 100}}]]}
+        ; {:des "Switch Pane"
+        ;  :rules [[:!Ti :!CSopen_bracket]
+        ;          [:!To :!CSclose_bracket]]}
+
+
+        ;; Simplayer implementation
+        ; {:des "SpaceFn"
+        ;  :rules [:Space-Mode
+        ;          [:left_command :left_command]
+        ;          [:left_option :left_option]
+        ;          [:left_shift :left_shift]
+        ;          [:left_control :left_control]
+        ;          [:1 :f1]
+        ;          [:2 :f2]
+        ;          [:3 :f3]
+        ;          [:4 :f4]
+        ;          [:5 :f5]
+        ;          [:6 :f6]
+        ;          [:7 :f7]
+        ;          [:##C8 :f8]
+        ;          [:9 :f9]
+        ;          [:0 :f10]
+        ;          [:hyphen :f11]
+        ;          [:equal_sign :f12]
+        ;          [:j :down_arrow]
+        ;          [:k :up_arrow]
+        ;          [:h :left_arrow]
+        ;          [:l :right_arrow]
+        ;          [:i :!CSopen_bracket]
+        ;          [:o :!CSclose_bracket]]}
+        ]}
