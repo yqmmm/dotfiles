@@ -71,6 +71,7 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'hrsh7th/cmp-buffer' -- cmp buffer source
   use 'hrsh7th/cmp-path' -- cmp path source
+  use 'ray-x/lsp_signature.nvim'
 
   -- Copilot
   if vim.fn.has('nvim-0.6') == 1 then
@@ -193,6 +194,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  require "lsp_signature".on_attach()
 end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
