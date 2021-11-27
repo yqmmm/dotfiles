@@ -89,6 +89,7 @@ require('packer').startup(function()
   use 'tpope/vim-surround'
   use {'wakatime/vim-wakatime'}
   use {'dstein64/vim-startuptime',  opt=true}
+  use {'windwp/nvim-autopairs'}
 
   -- Fuzzy Finder
   use {
@@ -223,6 +224,9 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- luasnip setup
 local luasnip = require 'luasnip'
+
+-- nvim-autopairs setup
+require('nvim-autopairs').setup{}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
