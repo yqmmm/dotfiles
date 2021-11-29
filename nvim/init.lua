@@ -111,7 +111,6 @@ require('packer').startup(function()
   use 'nvim-lualine/lualine.nvim'
   use 'jacoborus/tender.vim'
   use 'NLKNguyen/papercolor-theme'
-  use 'cormacrelf/dark-notify'
 
   -- Clipboard
   use 'ojroques/vim-oscyank'
@@ -138,17 +137,6 @@ require'lualine'.setup ({
     },
     lualine_x = {'filetype'},
   }
-})
-
-require('dark_notify').run({
-    schemes = {
-      dark = {
-	    colorscheme = "tender",
-	  },
-      light = {
-        colorscheme = "PaperColor",
-      }
-    }
 })
 
 -- ====LSP Settings====
