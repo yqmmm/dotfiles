@@ -28,4 +28,7 @@ karabiner:
 	mkdir -p ~/.config/
 	[ -f ~/.config/karabiner.edn ] || ln -s $(PWD)/karabiner.edn ~/.config/karabiner.edn
 
-.PHONY: all install alacritty nvim tmux fzf karabiner
+asdf:
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+
+.PHONY: all install alacritty nvim tmux fzf karabiner asdf
