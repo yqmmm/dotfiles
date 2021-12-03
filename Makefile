@@ -31,4 +31,8 @@ karabiner:
 asdf:
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
 
+poetry:
+	mkdir -p ~/.config/pypoetry
+	[ -f ~/.config/pypoetry/config.toml ] || ln -s $(PWD)/pypoetry-config.toml ~/.config/pypoetry/config.toml
+
 .PHONY: all install alacritty nvim tmux fzf karabiner asdf
