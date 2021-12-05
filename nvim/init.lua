@@ -55,6 +55,8 @@ vim.g.updatetime = 100
 
 utils.nnoremap('<leader>j', '<c-^>')
 
+utils.noremap('v', '//', "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
+
 vim.o.cursorline = true
 
 -- Plugins
@@ -87,9 +89,10 @@ require('packer').startup(function()
   -- Core Enhancement
   use 'tpope/vim-commentary'
   use 'tpope/vim-surround'
-  use {'wakatime/vim-wakatime'}
-  use {'dstein64/vim-startuptime',  opt=true}
-  use {'windwp/nvim-autopairs'}
+  use 'wakatime/vim-wakatime'
+  use {'dstein64/vim-startuptime', opt=true}
+  use 'windwp/nvim-autopairs'
+  use 'gandor/lightspeed.nvim'
 
   -- Fuzzy Finder
   use {
@@ -323,3 +326,6 @@ end
 
 -- wakatime
 vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r]', '')
+
+-- git-fugitive
+utils.nnoremap('<leader>gg', ':Git<CR><C-w>15-')
