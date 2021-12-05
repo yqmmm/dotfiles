@@ -86,7 +86,12 @@ require('packer').startup(function()
   }
 
   -- Core Enhancement
-  use 'tpope/vim-commentary'
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
   use 'tpope/vim-surround'
   use 'wakatime/vim-wakatime'
   use {'dstein64/vim-startuptime', opt=true}
@@ -326,3 +331,7 @@ vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r
 
 -- git-fugitive
 utils.nnoremap('<leader>gg', ':Git<CR><C-w>15-')
+
+-- Comment.nvim
+require('Comment').setup()
+
