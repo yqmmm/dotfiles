@@ -56,6 +56,7 @@ vim.g.updatetime = 100
 utils.nnoremap('<leader>j', '<c-^>')
 
 utils.noremap('v', '//', "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
+utils.nnoremap('<leader>cy', '<cmd>%y+<cr>')
 
 vim.o.cursorline = true
 
@@ -294,7 +295,7 @@ require('telescope').setup {
 
 -- TreeSitter Settings
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby"},
+  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby", "java"},
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
