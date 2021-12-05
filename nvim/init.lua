@@ -77,9 +77,7 @@ require('packer').startup(function()
   use 'ray-x/lsp_signature.nvim'
 
   -- Copilot
-  if vim.fn.has('nvim-0.6') == 1 then
-    use 'github/copilot.vim'
-  end
+  use 'github/copilot.vim'
 
   -- Syntax Highlight
   use {
@@ -314,16 +312,8 @@ utils.nnoremap('<C-n>', ':NvimTreeToggle<CR>')
 utils.nnoremap('<leader>n', ':NvimTreeFindFile<CR>')
 
 -- copilot.vim
-if vim.fn.has('nvim-0.6') == 1 then
-  -- local opts = {
-  --   silent = true,
-  --   script = true,
-  --   expr = true,
-  -- }
-  -- vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("\\<CR>")', opts)
-  vim.g.copilot_no_tab_map = true
-  vim.g.copilot_assume_mapped = false
-end
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = false
 
 -- wakatime
 vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r]', '')
