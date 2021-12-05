@@ -245,7 +245,12 @@ mapping = {
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
-        fallback()
+        local copilot_keys = vim.fn["copilot#Accept"]()
+        if copilot_keys ~= "" then
+          vim.api.nvim_feedkeys(copilot_keys, "i", true)
+        else
+          fallback()
+        end
       end
     end,
     ['<S-Tab>'] = function(fallback)
@@ -313,7 +318,8 @@ utils.nnoremap('<leader>n', ':NvimTreeFindFile<CR>')
 
 -- copilot.vim
 vim.g.copilot_no_tab_map = true
-vim.g.copilot_assume_mapped = false
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ""
 
 -- wakatime
 vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r]', '')
