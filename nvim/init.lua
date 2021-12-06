@@ -52,6 +52,7 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 -- Update quicker (mainly for git-gutter)
 vim.g.updatetime = 100
+vim.o.inccommand = 'split'
 
 utils.nnoremap('<leader>j', '<c-^>')
 
@@ -63,6 +64,30 @@ vim.o.cursorline = true
 -- Plugins
 vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function()
+  -- Modified from https://github.com/tjdevries/config_manager.git
+  local local_use = function(first, second, opts)
+    opts = opts or {}
+
+    local plug_path, home
+    if second == nil then
+      plug_path = first
+      home = "yqmmm"
+    else
+      plug_path = second
+      home = first
+    end
+
+    if vim.fn.isdirectory(vim.fn.expand("~/plugins/" .. plug_path)) == 1 then
+      opts[1] = "~/plugins/" .. plug_path
+    else
+      opts[1] = string.format("%s/%s", home, plug_path)
+    end
+
+    use(opts)
+  end
+
+  local_use 'color-memoize.nvim'
+
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
