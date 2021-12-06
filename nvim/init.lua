@@ -157,7 +157,8 @@ end)
 -- ===== Colorsheme Settings =====
 vim.o.termguicolors = true
 vim.cmd("colorscheme PaperColor")
-vim.o.background = 'light'
+utils.nnoremap('<leader>ud', '<cmd>Backgroun \'dark\'<cr>')
+utils.nnoremap('<leader>ul', '<cmd>Backgroun \'light\'<cr>')
 
 require'lualine'.setup ({
   sections = {
