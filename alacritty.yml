@@ -111,3 +111,7 @@ key_bindings:
 - Chars: "\x069"
   key: Key9
   mods: Command
+- { key: Period,    mods: Alt,       chars: "\x1b."                       } # Alt + .
+- { key: Comma,     mods: Alt,       chars: "\x1b,"                       } # Alt + .
+- { key: Minus,    mods: Alt,       chars: "\x1b-"                       } # Alt + .
+- { key: Equals,     mods: Alt,       chars: "\x1b="                       } # Alt + .
