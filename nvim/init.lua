@@ -269,29 +269,29 @@ mapping = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        local copilot_keys = vim.fn["copilot#Accept"]()
-        if copilot_keys ~= "" then
-          vim.api.nvim_feedkeys(copilot_keys, "i", true)
-        else
-          fallback()
-        end
-      end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end,
+    -- ['<Tab>'] = function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_next_item()
+    --   elseif luasnip.expand_or_jumpable() then
+    --     luasnip.expand_or_jump()
+    --   else
+    --     local copilot_keys = vim.fn["copilot#Accept"]()
+    --     if copilot_keys ~= "" then
+    --       vim.api.nvim_feedkeys(copilot_keys, "i", true)
+    --     else
+    --       fallback()
+    --     end
+    --   end
+    -- end,
+    -- ['<S-Tab>'] = function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_prev_item()
+    --   elseif luasnip.jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end,
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -313,6 +313,7 @@ utils.nnoremap('<leader>pp', '<cmd>Telescope grep_string<cr>')
 utils.nnoremap('<leader>co', '<cmd>Telescope lsp_workspace_symbols<cr>')
 utils.nnoremap('<leader>cp', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>')
 utils.nnoremap('<leader>cw', '<cmd>Telescope lsp_document_symbols<cr>')
+utils.nnoremap('<leader>t', '<cmd>Telescope builtin<cr>')
 utils.noremap('','<F1>', '<cmd>Telescope help_tags<cr>')
 
 require('telescope').setup {
@@ -347,9 +348,10 @@ utils.nnoremap('<C-n>', ':NvimTreeToggle<CR>')
 utils.nnoremap('<leader>n', ':NvimTreeFindFile<CR>')
 
 -- copilot.vim
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_assume_mapped = true
-vim.g.copilot_tab_fallback = ""
+-- Do this is <tab> is used in vim-cmp
+-- vim.g.copilot_no_tab_map = true
+-- vim.g.copilot_assume_mapped = true
+-- vim.g.copilot_tab_fallback = ""
 
 -- wakatime
 vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r]', '')
