@@ -331,6 +331,7 @@ vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r
 
 -- git-fugitive
 utils.nnoremap('<leader>gg', ':Git<CR><C-w>15-')
+utils.nnoremap('<leader>gp', ':Git push<CR>')
 
 -- Comment.nvim
 require('Comment').setup()
