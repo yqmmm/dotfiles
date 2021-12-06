@@ -96,7 +96,7 @@ require('packer').startup(function()
   use 'wakatime/vim-wakatime'
   use {'dstein64/vim-startuptime', opt=true}
   use 'windwp/nvim-autopairs'
-  use 'gandor/lightspeed.nvim'
+  use 'ggandor/lightspeed.nvim'
 
   -- Fuzzy Finder
   use {
