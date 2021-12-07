@@ -241,7 +241,14 @@ end
 require('rust-tools').setup({
   server = {
     autostart = false,
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+      local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+      local opts = { noremap=true, silent=true }
+      buf_set_keymap('n', '<leader>cg', '<cmd>RustRunnables<CR>', opts)
+      on_attach(client, bufnr)
+    end
   }
 })
 
