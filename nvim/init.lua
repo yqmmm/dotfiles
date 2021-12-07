@@ -105,6 +105,9 @@ require('packer').startup(function()
   use 'hrsh7th/cmp-path' -- cmp path source
   use 'ray-x/lsp_signature.nvim'
 
+  -- Use rust-analyzer's LSP extension
+  use 'simrat39/rust-tools.nvim'
+
   -- Copilot
   use 'github/copilot.vim'
 
@@ -145,7 +148,7 @@ require('packer').startup(function()
 
   -- UI Enhancement & Themes
   use 'nvim-lualine/lualine.nvim'
-  use 'jacoborus/tender.vim'
+  -- use 'jacoborus/tender.vim'
   use 'NLKNguyen/papercolor-theme'
 
   -- Clipboard
@@ -234,6 +237,14 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- Extra features from rust-tools.nvim
+require('rust-tools').setup({
+  server = {
+    autostart = false,
+    on_attach = on_attach,
+  }
+})
+
 nvim_lsp.ccls.setup {
   autostart = false,
   on_attach = on_attach,
@@ -264,8 +275,8 @@ snippet = {
   end,
 },
 mapping = {
-  ['<C-p>'] = cmp.mapping.select_prev_item(),
-  ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -334,7 +345,7 @@ require('telescope').setup {
 
 -- TreeSitter Settings
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby", "java"},
+  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby", "java", "rust"},
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
@@ -367,4 +378,5 @@ utils.nnoremap('<leader>gp', ':Git push<CR>')
 
 -- Comment.nvim
 require('Comment').setup()
+
 
