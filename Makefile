@@ -9,6 +9,7 @@ alacritty:
 	[ -f ~/.config/alacritty/alacritty.yml ] || ln -s $(PWD)/alacritty.yml ~/.config/alacritty/alacritty.yml
 
 nvim:
+	mkdir -p ~/.config/
 	[ -f ~/.config/nvim/ ] || ln -s $(PWD)/nvim ~/.config/nvim
 
 tmux:
