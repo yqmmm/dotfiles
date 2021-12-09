@@ -54,7 +54,6 @@ utils.noremap('v', '<leader>y', ':OSCYank<CR>')
 -- Split in reasonable positions
 vim.o.splitright = true
 vim.o.splitbelow = true
--- Update quicker (mainly for git-gutter)
 vim.g.updatetime = 100
 vim.o.inccommand = 'split'
 
@@ -144,7 +143,12 @@ require('packer').startup(function()
 
   -- Git
   use 'tpope/vim-fugitive'
-  use 'airblade/vim-gitgutter'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+  }
 
   -- UI Enhancement & Themes
   use 'nvim-lualine/lualine.nvim'
@@ -386,4 +390,5 @@ utils.nnoremap('<leader>gp', ':Git push<CR>')
 -- Comment.nvim
 require('Comment').setup()
 
-
+-- gitsigns.nvim
+require('gitsigns').setup()
