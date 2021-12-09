@@ -102,7 +102,7 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'hrsh7th/cmp-buffer' -- cmp buffer source
   use 'hrsh7th/cmp-path' -- cmp path source
-  use 'ray-x/lsp_signature.nvim'
+  use 'ray-x/lsp_signature.nvim' -- TODO: Try lsp-saga
 
   -- Use rust-analyzer's LSP extension
   use 'simrat39/rust-tools.nvim'
@@ -115,6 +115,7 @@ require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
 
   -- Core Enhancement
   use {
@@ -392,3 +393,31 @@ require('Comment').setup()
 
 -- gitsigns.nvim
 require('gitsigns').setup()
+
+-- treesitter-textobjects.nvim
+require'nvim-treesitter.configs'.setup {
+  textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["<down>"] = "@function.outer",
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["<up>"] = "@function.outer",
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+  },
+}
