@@ -49,8 +49,6 @@ utils.nnoremap('<A-,>', '<C-w>5<')
 utils.nnoremap('<A-.>', '<C-w>5>')
 -- Clipboard
 utils.noremap('v', '<leader>p', '"*p')
--- utils.noremap('v', '<leader>y', '"*y')
-utils.noremap('v', '<leader>y', ':OSCYank<CR>')
 -- Split in reasonable positions
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -357,7 +355,7 @@ require('telescope').setup {
 
 -- TreeSitter Settings
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby", "java", "rust"},
+  ensure_installed = {"c", "cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby", "java", "rust"},
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
@@ -421,3 +419,9 @@ require'nvim-treesitter.configs'.setup {
     },
   },
 }
+
+-- vim-oscyank
+utils.noremap('v', '<leader>y', ':OSCYank<CR>')
+-- Yank relative path of current buffer (vimscript)
+-- let @" = expand("%")
+-- :OSCYankReg "
