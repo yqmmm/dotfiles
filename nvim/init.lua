@@ -382,9 +382,11 @@ utils.nnoremap('<leader>n', ':NvimTreeFindFile<CR>')
 -- wakatime
 vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r]', '')
 
--- git-fugitive
+-- git key bindings
 utils.nnoremap('<leader>gg', ':Git<CR><C-w>15-')
 utils.nnoremap('<leader>gp', ':Git push<CR>')
+utils.nnoremap('<leader>gs', ':Telescope git_status<CR>')
+utils.nnoremap('<leader>gb', ':Git blame<CR>')
 
 -- Comment.nvim
 require('Comment').setup()
