@@ -127,6 +127,8 @@ require('packer').startup(function()
   use {'dstein64/vim-startuptime', opt=true}
   use 'windwp/nvim-autopairs'
   use 'ggandor/lightspeed.nvim'
+  -- Lua
+  use 'folke/todo-comments.nvim'
 
   -- Fuzzy Finder
   use {
@@ -156,6 +158,9 @@ require('packer').startup(function()
 
   -- Clipboard
   use 'ojroques/vim-oscyank'
+
+  -- Magic
+  use 'lewis6991/impatient.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -427,3 +432,11 @@ utils.noremap('v', '<leader>y', ':OSCYank<CR>')
 -- Yank relative path of current buffer (vimscript)
 -- let @" = expand("%")
 -- :OSCYankReg "
+
+-- todo-comments
+require("todo-comments").setup {}
+
+-- impatient.nvim
+require('impatient')
+
+
