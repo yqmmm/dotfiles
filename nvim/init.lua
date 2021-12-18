@@ -236,7 +236,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'gopls', 'pylsp', 'rnix', 'solargraph', 'rust_analyzer', 'clangd' }
+local servers = { 'gopls', 'pylsp', 'rnix', 'solargraph', 'clangd' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     autostart = false,
@@ -256,7 +256,23 @@ require('rust-tools').setup({
       local opts = { noremap=true, silent=true }
       buf_set_keymap('n', '<leader>cg', '<cmd>RustRunnables<CR>', opts)
       on_attach(client, bufnr)
-    end
+    end,
+    capabilities = capabilities,
+    settings = {
+        ["rust-analyzer"] = {
+            assist = {
+                importGranularity = "module",
+                importPrefix = "by_self",
+            },
+            cargo = {
+                loadOutDirsFromCheck = true,
+                allFeatures = true,
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
   }
 })
 
@@ -264,9 +280,12 @@ nvim_lsp.ccls.setup {
   autostart = false,
   on_attach = on_attach,
   capabilities = capabilities,
-  init_options = {
-    compilationDatabaseDirectory = "build";
+  index = {
+    multiVersion = 1;
   }
+  -- init_options = {
+  --   compilationDatabaseDirectory = "build";
+  -- }
 }
 
 -- Set completeopt to have a better completion experience
