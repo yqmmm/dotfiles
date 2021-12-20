@@ -34,7 +34,7 @@ font:
     family: SauceCodePro Nerd Font
   normal:
     family: SauceCodePro Nerd Font
-  size: 14.0
+  size: 13.0
 key_bindings:
 - action: CreateNewWindow
   key: N
@@ -111,7 +111,15 @@ key_bindings:
 - Chars: "\x069"
   key: Key9
   mods: Command
-- { key: Period,    mods: Alt,       chars: "\x1b."                       } # Alt + .
-- { key: Comma,     mods: Alt,       chars: "\x1b,"                       } # Alt + .
-- { key: Minus,    mods: Alt,       chars: "\x1b-"                       } # Alt + .
-- { key: Equals,     mods: Alt,       chars: "\x1b="                       } # Alt + .
+- chars: "\e."
+  key: Period
+  mods: Alt
+- chars: "\e,"
+  key: Comma
+  mods: Alt
+- chars: "\e-"
+  key: Minus
+  mods: Alt
+- chars: "\e="
+  key: Equals
+  mods: Alt
