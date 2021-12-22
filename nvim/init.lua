@@ -259,24 +259,27 @@ require('rust-tools').setup({
     end,
     capabilities = capabilities,
     settings = {
-        ["rust-analyzer"] = {
-            assist = {
-                importGranularity = "module",
-                importPrefix = "by_self",
-            },
-            cargo = {
-                loadOutDirsFromCheck = true,
-                allFeatures = true,
-            },
-            procMacro = {
-                enable = true
-            },
-            diagnostics = {
-              enable = true,
-              disabled = {"unresolved-proc-macro"},
-              enableExperimental = true,
-          },
-        }
+      ["rust-analyzer"] = {
+        assist = {
+            importGranularity = "module",
+            importPrefix = "by_self",
+        },
+        cargo = {
+            loadOutDirsFromCheck = true,
+            allFeatures = true,
+        },
+        procMacro = {
+            enable = true
+        },
+        diagnostics = {
+          enable = true,
+          disabled = {"unresolved-proc-macro"},
+          enableExperimental = true,
+        },
+        checkOnSave = {
+          command = "clippy"
+        },
+      }
     }
   }
 })
