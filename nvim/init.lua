@@ -114,6 +114,8 @@ require('packer').startup(function()
     run = ':TSUpdate'
   }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  -- Lua
+  use "SmiteshP/nvim-gps"
 
   -- Core Enhancement
   use {
@@ -175,6 +177,9 @@ vim.cmd("colorscheme PaperColor")
 utils.nnoremap('<leader>ud', '<cmd>Backgroun \'dark\'<cr>')
 utils.nnoremap('<leader>ul', '<cmd>Backgroun \'light\'<cr>')
 
+gps = require("nvim-gps")
+gps.setup()
+
 require'lualine'.setup ({
   sections = {
     lualine_c = {
@@ -183,7 +188,10 @@ require'lualine'.setup ({
         path = 1,
       }
     },
-    lualine_x = {'filetype'},
+    -- lualine_x = {'filetype'},
+    lualine_x = {
+      { gps.get_location, cond = gps.is_available },
+    }
   }
 })
 
