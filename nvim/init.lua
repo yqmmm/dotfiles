@@ -1,3 +1,5 @@
+require('impatient')
+
 -- Boostrapping packer
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -53,6 +55,7 @@ utils.noremap('v', '<leader>p', '"*p')
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.g.updatetime = 100
+-- Other things
 vim.o.inccommand = 'split'
 
 utils.nnoremap('<leader>j', '<c-^>')
@@ -120,9 +123,6 @@ require('packer').startup(function()
   -- Core Enhancement
   use {
     'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
   }
   use 'tpope/vim-surround'
   use 'wakatime/vim-wakatime'
