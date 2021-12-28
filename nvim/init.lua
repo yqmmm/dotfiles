@@ -137,6 +137,8 @@ require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use 'windwp/nvim-spectre'
+
 
   -- File Explorer
    use {
@@ -477,4 +479,11 @@ require("todo-comments").setup {}
 -- impatient.nvim
 require('impatient')
 
+-- nvim-spectre
+utils.nnoremap('<leader>S', ':lua require("spectre").open()<CR>')
 
+-- search current word
+utils.nnoremap('<leader>sw', ':lua require("spectre").open_visual({select_word=true})<CR>')
+-- vnoremap <leader>s :lua require('spectre').open_visual()<CR>
+-- search in current file
+-- nnoremap <leader>sp viw:lua require('spectre').open_file_search()<cr>
