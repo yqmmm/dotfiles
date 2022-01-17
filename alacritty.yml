@@ -849,20 +849,20 @@ key_bindings:
   - {key: Slash, mods: Command, Chars: gcc}
 
   # Command + Number
-  - {key: Key0,   mods: Command, Chars: "\x060"}
-  - {key: Key1,   mods: Command, Chars: "\x061"}
-  - {key: Key2,   mods: Command, Chars: "\x062"}
-  - {key: Key3,   mods: Command, Chars: "\x063"}
-  - {key: Key4,   mods: Command, Chars: "\x064"}
-  - {key: Key5,   mods: Command, Chars: "\x065"}
-  - {key: Key6,   mods: Command, Chars: "\x066"}
-  - {key: Key7,   mods: Command, Chars: "\x067"}
-  - {key: Key8,   mods: Command, Chars: "\x068"}
-  - {key: Key9,   mods: Command, Chars: "\x069"}
-  - {key: Period, mods: Alt,     Chars: "\e."}
-  - {key: Comma,  mods: Alt,     Chars: "\e,"}
-  - {key: Minus,  mods: Alt,     Chars: "\e-"}
-  - {key: Equals, mods: Alt,     Chars: "\e="}
+  - {key: Key0, mods: Command, Chars: "\x060"}
+  - {key: Key1, mods: Command, Chars: "\x061"}
+  - {key: Key2, mods: Command, Chars: "\x062"}
+  - {key: Key3, mods: Command, Chars: "\x063"}
+  - {key: Key4, mods: Command, Chars: "\x064"}
+  - {key: Key5, mods: Command, Chars: "\x065"}
+  - {key: Key6, mods: Command, Chars: "\x066"}
+  - {key: Key7, mods: Command, Chars: "\x067"}
+  - {key: Key8, mods: Command, Chars: "\x068"}
+  - {key: Key9, mods: Command, Chars: "\x069"}
+  - {key: Period, mods: Alt, Chars: "\e."}
+  - {key: Comma, mods: Alt, Chars: "\e,"}
+  - {key: Minus, mods: Alt, Chars: "\e-"}
+  - {key: Equals, mods: Alt, Chars: "\e="}
 
 #debug:
   # Display the time it takes to redraw each frame.
