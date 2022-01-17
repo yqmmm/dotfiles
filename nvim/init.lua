@@ -265,7 +265,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'gopls', 'pylsp', 'rnix', 'solargraph', 'clangd' }
+local servers = { 'gopls', 'pylsp', 'rnix', 'solargraph', 'clangd', 'vuels' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     autostart = false,

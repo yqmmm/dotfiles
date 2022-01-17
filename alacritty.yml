@@ -1,28 +1,28 @@
 colors:
   bright:
-    black: '0x585858'
-    blue: '0xffaf00'
-    cyan: '0x00afaf'
-    green: '0xafd700'
-    magenta: '0xffaf00'
-    red: '0x5faf5f'
-    white: '0x5f8787'
-    yellow: '0xaf87d7'
+    black: '0xbcbcbc'
+    blue: '0xd75f00'
+    cyan: '0x005faf'
+    green: '0xd70087'
+    magenta: '0xd75f00'
+    red: '0xd70000'
+    white: '0x005f87'
+    yellow: '0x8700af'
   cursor:
-    cursor: '0x808080'
-    text: '0x1c1c1c'
+    cursor: '0x878787'
+    text: '0xeeeeee'
   normal:
-    black: '0x1c1c1c'
-    blue: '0x5fafd7'
-    cyan: '0xd7875f'
-    green: '0x5faf00'
-    magenta: '0x808080'
-    red: '0xaf005f'
-    white: '0xd0d0d0'
-    yellow: '0xd7af5f'
+    black: '0xeeeeee'
+    blue: '0x0087af'
+    cyan: '0x005f87'
+    green: '0x008700'
+    magenta: '0x878787'
+    red: '0xaf0000'
+    white: '0x444444'
+    yellow: '0x5f8700'
   primary:
-    background: '0x1c1c1c'
-    foreground: '0x808080'
+    background: '0xeeeeee'
+    foreground: '0x878787'
 font:
   bold:
     family: SauceCodePro Nerd Font
