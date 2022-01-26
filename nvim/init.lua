@@ -416,7 +416,7 @@ require('telescope').setup {
 
 -- TreeSitter Settings
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"c", "cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby", "java", "rust"},
+  ensure_installed = {"c", "cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby", "java", "rust", "fish"},
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
@@ -456,7 +456,37 @@ utils.nnoremap('<leader>gb', ':Git blame<CR>')
 require('Comment').setup()
 
 -- gitsigns.nvim
-require('gitsigns').setup()
+require('gitsigns').setup {
+  on_attach = function(bufnr)
+    local function map(mode, lhs, rhs, opts)
+        opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
+        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+    end
+    
+    -- Navigation
+    map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
+    map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
+    
+    -- Actions
+    map('n', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
+    map('v', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
+    map('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
+    map('v', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
+    map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
+    map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
+    map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
+    map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
+    map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+    map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
+    map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
+    map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+    map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
+    
+    -- Text object                                        
+    map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
+}
 
 -- treesitter-textobjects.nvim
 require'nvim-treesitter.configs'.setup {
@@ -503,6 +533,6 @@ utils.nnoremap('<leader>S', ':lua require("spectre").open()<CR>')
 
 -- search current word
 utils.nnoremap('<leader>sw', ':lua require("spectre").open_visual({select_word=true})<CR>')
--- vnoremap <leader>s :lua require('spectre').open_visual()<CR>
+utils.noremap('v', '<leader>s', ':lua require("spectre").open_visual()<CR>')
 -- search in current file
 -- nnoremap <leader>sp viw:lua require('spectre').open_file_search()<cr>
