@@ -207,6 +207,12 @@ end
 
 require'lualine'.setup ({
   sections = {
+    lualine_b = {
+      {
+       'diff',
+        colored = false,
+      }
+    },
     lualine_c = {
       {
         'filename',
