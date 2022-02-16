@@ -159,11 +159,13 @@ require('packer').startup(function()
   use 'nvim-lualine/lualine.nvim'
   -- use 'jacoborus/tender.vim'
   use 'NLKNguyen/papercolor-theme'
+  -- use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
   -- Clipboard
   use 'ojroques/vim-oscyank'
 
   -- Magic
+  -- use 'uga-rosa/utf8.nvim'
   use 'lewis6991/impatient.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
@@ -182,6 +184,8 @@ utils.nnoremap('<leader>ul', '<cmd>Backgroun \'light\'<cr>')
 gps = require("nvim-gps")
 gps.setup()
 
+-- utf8 = require("utf8")
+
 --- https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
 --- @param trunc_width number trunctates component when screen width is less then trunc_width
 --- @param trunc_len number truncates component to trunc_len number of chars
@@ -195,6 +199,7 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
     elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
        -- return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
        return (no_ellipsis and '' or '...') .. str:sub(#str - trunc_len + 1)
+       -- TODO: Support wide Unicode characters
     end
     return str
   end
@@ -536,3 +541,8 @@ utils.nnoremap('<leader>sw', ':lua require("spectre").open_visual({select_word=t
 utils.noremap('v', '<leader>s', ':lua require("spectre").open_visual()<CR>')
 -- search in current file
 -- nnoremap <leader>sp viw:lua require('spectre').open_file_search()<cr>
+
+-- vim.opt.termguicolors = true
+-- require("bufferline").setup{
+--   always_show_bufferline = false,
+-- }
