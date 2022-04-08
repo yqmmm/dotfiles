@@ -4,6 +4,9 @@ UNAME_S := $(shell uname -s)
 
 install: alacritty nvim tmux
 
+kitty:
+	[ -d ~/.config/kitty/ ] || ln -s $(PWD)/kitty ~/.config/kitty
+
 alacritty:
 	mkdir -p ~/.config/alacritty
 	[ -f ~/.config/alacritty/alacritty.yml ] || ln -s $(PWD)/alacritty.yml ~/.config/alacritty/alacritty.yml
@@ -37,4 +40,4 @@ pythonic:
 	[ -f ~/.config/pypoetry/config.toml ] || ln -s $(PWD)/pypoetry-config.toml ~/.config/pypoetry/config.toml
 	[ -f ~/.config/pycodestyle ] || ln -s $(PWD)/pycodestyle ~/.config/pycodestyle
 
-.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic
+.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty
