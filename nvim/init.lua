@@ -168,6 +168,9 @@ require('packer').startup(function()
   -- use 'uga-rosa/utf8.nvim'
   use 'lewis6991/impatient.nvim'
 
+  -- Misc
+  use 'nathangrigg/vim-beancount'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -427,7 +430,9 @@ require('telescope').setup {
 
 -- TreeSitter Settings
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"c", "cpp", "bash", "python", "go", "lua", "toml", "json", "nix", "ruby", "java", "rust", "fish"},
+  ensure_installed = {"c", "cpp", "bash", "python", "go", "lua", "toml", 
+                      "json", "nix", "ruby", "java", "rust", "fish",
+                      "javascript"},
   highlight = { enable = true },
   incremental_selection = {
     enable = true,

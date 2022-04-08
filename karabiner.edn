@@ -12,7 +12,8 @@
     ;; !! | mandatory command + control + optional + shift (hyper)
     ;; ## | optional any
 
-{:applications {:vim-mode-disabled-application ["^com\\.apple\\.Terminal$",
+{:applications 
+ {:vim-mode-disabled-application ["^com\\.apple\\.Terminal$",
                                                 "^com\\.googlecode\\.iterm2$",
                                                 "^io\\.alacritty$",
                                                 "^org\\.vim\\.",
@@ -31,8 +32,8 @@
                 ;  [:!T#Of :delete_or_backspace]
                  [:!Ti :!CSopen_bracket]
                  [:!To :!CSclose_bracket]
-                 [:!Topen_bracket :!Tleft_arrow]
-                 [:!Tclose_bracket :!Tright_arrow]
+                 ; [:!Topen_bracket :!Tleft_arrow]
+                 ; [:!Tclose_bracket :!Tright_arrow]
                  ]}
         {:des "Magical Control"
          :rules [
