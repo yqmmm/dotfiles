@@ -117,7 +117,6 @@ require('packer').startup(function()
     run = ':TSUpdate'
   }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  -- Lua
   use "SmiteshP/nvim-gps"
 
   -- Core Enhancement
@@ -154,6 +153,7 @@ require('packer').startup(function()
       'nvim-lua/plenary.nvim'
     },
   }
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   -- UI Enhancement & Themes
   use 'nvim-lualine/lualine.nvim'
@@ -165,7 +165,6 @@ require('packer').startup(function()
   use 'ojroques/vim-oscyank'
 
   -- Magic
-  -- use 'uga-rosa/utf8.nvim'
   use 'lewis6991/impatient.nvim'
 
   -- Misc
@@ -472,13 +471,14 @@ utils.nnoremap('<leader>gb', ':Git blame<CR>')
 -- Comment.nvim
 require('Comment').setup()
 
+local function map(mode, lhs, rhs, opts)
+    opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
+    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+end
+
 -- gitsigns.nvim
 require('gitsigns').setup {
   on_attach = function(bufnr)
-    local function map(mode, lhs, rhs, opts)
-        opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
-        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
-    end
     
     -- Navigation
     map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
@@ -504,6 +504,9 @@ require('gitsigns').setup {
     map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 }
+
+-- diffview.nvim
+map('n', '<leader>d', '<cmd>DiffviewOpen<CR>')
 
 -- treesitter-textobjects.nvim
 require'nvim-treesitter.configs'.setup {
