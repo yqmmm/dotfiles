@@ -62,6 +62,7 @@ utils.nnoremap('<leader>j', '<c-^>')
 
 utils.noremap('v', '//', "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
 utils.nnoremap('<leader>cy', '<cmd>%y+<cr>')
+utils.nnoremap('<leader>cr', '<cmd>let @+ = expand("%")<cr>')
 
 vim.o.cursorline = true
 
@@ -360,6 +361,8 @@ snippet = {
   end,
 },
 mapping = {
+    ['<up>'] = cmp.mapping.select_prev_item(),
+    ['<down>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -471,14 +474,14 @@ utils.nnoremap('<leader>gb', ':Git blame<CR>')
 -- Comment.nvim
 require('Comment').setup()
 
-local function map(mode, lhs, rhs, opts)
-    opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
-    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
-end
-
 -- gitsigns.nvim
 require('gitsigns').setup {
   on_attach = function(bufnr)
+
+    local function map(mode, lhs, rhs, opts)
+        opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
+        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
+    end
     
     -- Navigation
     map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
@@ -506,7 +509,7 @@ require('gitsigns').setup {
 }
 
 -- diffview.nvim
-map('n', '<leader>d', '<cmd>DiffviewOpen<CR>')
+utils.nnoremap('<leader>d', '<cmd>DiffviewOpen<CR>')
 
 -- treesitter-textobjects.nvim
 require'nvim-treesitter.configs'.setup {
