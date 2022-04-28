@@ -298,48 +298,6 @@ mapping = {
   },
 }
 
--- Telescope Settings
-utils.nnoremap('<leader>b', '<cmd>Telescope buffers<cr>')
-utils.nnoremap('<leader>f', '<cmd>Telescope find_files<cr>')
-utils.nnoremap('<leader>h', '<cmd>Telescope oldfiles<cr>')
-utils.nnoremap('<leader>cc', '<cmd>Telescope commands<cr>')
-utils.nnoremap('<leader>ch', '<cmd>Telescope command_history<cr>')
-utils.nnoremap('<leader>l', '<cmd>Telescope live_grep<cr>')
-utils.nnoremap('<leader>z', '<cmd>Telescope resume<cr>')
-utils.nnoremap('<leader>pp', '<cmd>Telescope grep_string<cr>')
-utils.nnoremap('<leader>co', '<cmd>Telescope lsp_workspace_symbols<cr>')
-utils.nnoremap('<leader>cp', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>')
-utils.nnoremap('<leader>cw', '<cmd>Telescope lsp_document_symbols<cr>')
-utils.nnoremap('<leader>t', '<cmd>Telescope builtin<cr>')
-utils.noremap('','<F1>', '<cmd>Telescope help_tags<cr>')
-
-require('telescope').setup {
-  defaults = {
-    layout_strategy = "flex",
-    layout_config = {
-      flex = {
-        flip_columns = 150,
-      },
-    },
-  },
-}
-
--- TreeSitter Settings
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"c", "cpp", "bash", "python", "go", "lua", "toml", 
-                      "json", "nix", "ruby", "java", "rust", "fish",
-                      "javascript"},
-  highlight = { enable = true },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-}
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.wo.foldenable=false
@@ -358,79 +316,8 @@ utils.nnoremap('<leader>n', ':NvimTreeFindFile<CR>')
 -- wakatime
 vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r]', '')
 
--- git key bindings
-utils.nnoremap('<leader>gg', ':Git<CR><C-w>15-')
-utils.nnoremap('<leader>gp', ':Git push<CR>')
-utils.nnoremap('<leader>gs', ':Telescope git_status<CR>')
-utils.nnoremap('<leader>gb', ':Git blame<CR>')
-
 -- Comment.nvim
 require('Comment').setup()
-
--- gitsigns.nvim
-require('gitsigns').setup {
-  on_attach = function(bufnr)
-
-    local function map(mode, lhs, rhs, opts)
-        opts = vim.tbl_extend('force', {noremap = true, silent = true}, opts or {})
-        vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
-    end
-    
-    -- Navigation
-    map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
-    map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
-    
-    -- Actions
-    map('n', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
-    map('v', '<leader>hs', '<cmd>Gitsigns stage_hunk<CR>')
-    map('n', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
-    map('v', '<leader>hr', '<cmd>Gitsigns reset_hunk<CR>')
-    map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
-    map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
-    map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
-    map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
-    map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
-    map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
-    map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
-    map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
-    map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
-    
-    -- Text object                                        
-    map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-    map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-  end
-}
-
--- diffview.nvim
-utils.nnoremap('<leader>d', '<cmd>DiffviewOpen<CR>')
-
--- treesitter-textobjects.nvim
-require'nvim-treesitter.configs'.setup {
-  textobjects = {
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        ["<down>"] = "@function.outer",
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer",
-      },
-      goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer",
-      },
-      goto_previous_start = {
-        ["<up>"] = "@function.outer",
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
-      },
-      goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
-      },
-    },
-  },
-}
 
 -- vim-oscyank
 utils.noremap('v', '<leader>y', ':OSCYank<CR>')
