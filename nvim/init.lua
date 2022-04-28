@@ -75,164 +75,6 @@ utils.nnoremap('<leader>ul', '<cmd>Backgroun \'light\'<cr>')
 gps = require("nvim-gps")
 gps.setup()
 
--- utf8 = require("utf8")
-
---- https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
---- @param trunc_width number trunctates component when screen width is less then trunc_width
---- @param trunc_len number truncates component to trunc_len number of chars
---- @param hide_width number hides component when window width is smaller then hide_width
---- @param no_ellipsis boolean whether to disable adding '...' at end after truncation
---- return function that can format the component accordingly
-local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
-  return function(str)
-    local win_width = vim.fn.winwidth(0)
-    if hide_width and win_width < hide_width then return ''
-    elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-       -- return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
-       return (no_ellipsis and '' or '...') .. str:sub(#str - trunc_len + 1)
-       -- TODO: Support wide Unicode characters
-    end
-    return str
-  end
-end
-
-require'lualine'.setup ({
-  sections = {
-    lualine_b = {
-      {
-       'diff',
-        colored = false,
-      }
-    },
-    lualine_c = {
-      {
-        'filename',
-        path = 1,
-        shorting_target = 80,
-      }
-    },
-    -- lualine_x = {'filetype'},
-    lualine_x = {
-      { gps.get_location, cond = gps.is_available, fmt=trunc(130, 30, 80) },
-    }
-  }
-})
-
--- ====LSP Settings====
--- Completion
--- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
-local nvim_lsp = require('lspconfig')
-
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-
-local function set_keymap(...) vim.api.nvim_set_keymap(...) end
-local function set_option(...) vim.api.nvim_set_option(...) end
-
--- Mappings.
-local opts = { noremap=true, silent=true }
-
--- See `:help vim.lsp.*` for documentation on any of the below functions
-set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
--- TODO: Would be better to use lua
--- Like this: https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
--- But without overriding old gd
-set_keymap('n', 'gvd', ':only<CR>:vsplit<CR>gd', { silent=true })
-set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-set_keymap('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
--- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
-set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-set_keymap('n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  require "lsp_signature".on_attach()
-end
-
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'gopls', 'pylsp', 'rnix', 'solargraph', 'clangd', 'pyright' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    autostart = false,
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.formatting.black,
-    },
-})
-
--- Extra features from rust-tools.nvim
-require('rust-tools').setup({
-  server = {
-    autostart = false,
-    on_attach = function(client, bufnr)
-      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-      local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-      local opts = { noremap=true, silent=true }
-      buf_set_keymap('n', '<leader>cg', '<cmd>RustRunnables<CR>', opts)
-      on_attach(client, bufnr)
-    end,
-    capabilities = capabilities,
-    settings = {
-      ["rust-analyzer"] = {
-        assist = {
-            importGranularity = "module",
-            importPrefix = "by_self",
-        },
-        cargo = {
-            loadOutDirsFromCheck = true,
-            allFeatures = true,
-        },
-        procMacro = {
-            enable = true
-        },
-        diagnostics = {
-          enable = true,
-          disabled = {"unresolved-proc-macro"},
-          enableExperimental = true,
-        },
-        checkOnSave = {
-          command = "clippy"
-        },
-      }
-    }
-  }
-})
-
-nvim_lsp.ccls.setup {
-  autostart = false,
-  on_attach = on_attach,
-  capabilities = capabilities,
-  index = {
-    multiVersion = 1;
-  }
-  -- init_options = {
-  --   compilationDatabaseDirectory = "build";
-  -- }
-}
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
@@ -248,47 +90,47 @@ cmp.setup {
 -- completion = {
 --   autocomplete = false
 -- },
-snippet = {
-  expand = function(args)
-    require('luasnip').lsp_expand(args.body)
-  end,
-},
-mapping = {
-    ['<up>'] = cmp.mapping.select_prev_item(),
-    ['<down>'] = cmp.mapping.select_next_item(),
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    -- ['<Tab>'] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   elseif luasnip.expand_or_jumpable() then
-    --     luasnip.expand_or_jump()
-    --   else
-    --     local copilot_keys = vim.fn["copilot#Accept"]()
-    --     if copilot_keys ~= "" then
-    --       vim.api.nvim_feedkeys(copilot_keys, "i", true)
-    --     else
-    --       fallback()
-    --     end
-    --   end
-    -- end,
-    -- ['<S-Tab>'] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_prev_item()
-    --   elseif luasnip.jumpable(-1) then
-    --     luasnip.jump(-1)
-    --   else
-    --     fallback()
-    --   end
-    -- end,
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+      ['<up>'] = cmp.mapping.select_prev_item(),
+      ['<down>'] = cmp.mapping.select_next_item(),
+      ['<C-p>'] = cmp.mapping.select_prev_item(),
+      ['<C-n>'] = cmp.mapping.select_next_item(),
+      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
+      ['<CR>'] = cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      },
+      -- ['<Tab>'] = function(fallback)
+      --   if cmp.visible() then
+      --     cmp.select_next_item()
+      --   elseif luasnip.expand_or_jumpable() then
+      --     luasnip.expand_or_jump()
+      --   else
+      --     local copilot_keys = vim.fn["copilot#Accept"]()
+      --     if copilot_keys ~= "" then
+      --       vim.api.nvim_feedkeys(copilot_keys, "i", true)
+      --     else
+      --       fallback()
+      --     end
+      --   end
+      -- end,
+      -- ['<S-Tab>'] = function(fallback)
+      --   if cmp.visible() then
+      --     cmp.select_prev_item()
+      --   elseif luasnip.jumpable(-1) then
+      --     luasnip.jump(-1)
+      --   else
+      --     fallback()
+      --   end
+      -- end,
   },
   sources = {
     { name = 'nvim_lsp' },
@@ -301,11 +143,6 @@ mapping = {
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.wo.foldenable=false
-
--- nvim-tree.lua
-require 'nvim-tree'.setup {}
-utils.nnoremap('<C-n>', ':NvimTreeToggle<CR>')
-utils.nnoremap('<leader>n', ':NvimTreeFindFile<CR>')
 
 -- copilot.vim
 -- Do this is <tab> is used in vim-cmp
