@@ -98,13 +98,16 @@ require('packer').startup(function()
 
   -- LSP
   use 'neovim/nvim-lspconfig'
+  use 'ray-x/lsp_signature.nvim' -- TODO: Try lsp-saga
+  use 'jose-elias-alvarez/null-ls.nvim'
+
+  -- Completion
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'hrsh7th/cmp-buffer' -- cmp buffer source
   use 'hrsh7th/cmp-path' -- cmp path source
-  use 'ray-x/lsp_signature.nvim' -- TODO: Try lsp-saga
 
   -- Use rust-analyzer's LSP extension
   use 'simrat39/rust-tools.nvim'
@@ -288,6 +291,12 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.formatting.black,
+    },
+})
 
 -- Extra features from rust-tools.nvim
 require('rust-tools').setup({
