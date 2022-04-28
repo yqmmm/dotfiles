@@ -41,3 +41,6 @@ require('gitsigns').setup {
 -- diffview.nvim
 vim.keymap.set('n', '<leader>d', '<cmd>DiffviewOpen<CR>')
 
+-- lazygit with floatterm
+vim.api.nvim_create_user_command('Lazygit', 'FloatermNew lazygit', {})
+vim.keymap.set('n', '<leader>gl', ':Lazygit<CR>')
