@@ -99,6 +99,7 @@ require('packer').startup(function()
   -- use 'jacoborus/tender.vim'
   use 'NLKNguyen/papercolor-theme'
   -- use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  use 'toppair/reach.nvim'
 
   -- Clipboard
   use 'ojroques/vim-oscyank'
