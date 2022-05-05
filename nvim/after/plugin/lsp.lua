@@ -39,12 +39,17 @@ set_keymap('n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+local make_on_attach = function(illuminate)
+  return function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  require "lsp_signature".on_attach()
+    require "lsp_signature".on_attach()
+    if illuminate then 
+      require 'illuminate'.on_attach(client)
+    end
+  end
 end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
@@ -52,7 +57,7 @@ local servers = { 'gopls', 'pylsp', 'rnix', 'solargraph', 'clangd', 'pyright' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     autostart = false,
-    on_attach = on_attach,
+    on_attach = make_on_attach(true),
     capabilities = capabilities,
   }
 end
@@ -104,13 +109,10 @@ require('rust-tools').setup({
 
 nvim_lsp.ccls.setup {
   autostart = false,
-  on_attach = on_attach,
+  on_attach = make_on_attach(false),
   capabilities = capabilities,
   index = {
     multiVersion = 1;
   }
-  -- init_options = {
-  --   compilationDatabaseDirectory = "build";
-  -- }
 }
 

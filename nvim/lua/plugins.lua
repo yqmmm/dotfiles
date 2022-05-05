@@ -35,6 +35,7 @@ require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'ray-x/lsp_signature.nvim' -- TODO: Try lsp-saga
   use 'jose-elias-alvarez/null-ls.nvim'
+  use 'RRethy/vim-illuminate'
 
   -- Completion
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
