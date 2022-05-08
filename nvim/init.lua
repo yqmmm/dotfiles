@@ -1,4 +1,4 @@
-require('impatient')
+-- require('impatient')
 
 -- Boostrapping packer
 local fn = vim.fn
@@ -101,7 +101,7 @@ utils.noremap('v', '<leader>y', ':OSCYank<CR>')
 require("todo-comments").setup {}
 
 -- impatient.nvim
-require('impatient')
+-- require('impatient')
 
 -- nvim-spectre
 utils.nnoremap('<leader>S', ':lua require("spectre").open()<CR>')

@@ -78,7 +78,7 @@ require('rust-tools').setup({
 
       local opts = { noremap=true, silent=true }
       buf_set_keymap('n', '<leader>cg', '<cmd>RustRunnables<CR>', opts)
-      on_attach(client, bufnr)
+      make_on_attach(true)(clientt, bufnr)
     end,
     capabilities = capabilities,
     settings = {
@@ -116,3 +116,4 @@ nvim_lsp.ccls.setup {
   }
 }
 
+vim.g.Illuminate_ftblacklist = "['NvimTree']"

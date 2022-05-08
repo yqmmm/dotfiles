@@ -97,7 +97,6 @@ require('packer').startup(function()
 
   -- UI Enhancement & Themes
   use 'nvim-lualine/lualine.nvim'
-  -- use 'jacoborus/tender.vim'
   use 'NLKNguyen/papercolor-theme'
   -- use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   use 'toppair/reach.nvim'
