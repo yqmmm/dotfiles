@@ -67,8 +67,13 @@ utils.nnoremap('<leader>cr', '<cmd>let @+ = expand("%")<cr>')
 vim.o.cursorline = true
 
 -- ===== Colorsheme Settings =====
+
+-- tokyonight.
+vim.g.tokyonight_style = "storm"
+vim.g.tokyonight_italic_functions = true
+
 vim.o.termguicolors = true
-vim.cmd("colorscheme PaperColor")
+vim.cmd[[colorscheme PaperColor]]
 utils.nnoremap('<leader>ud', '<cmd>Backgroun \'dark\'<cr>')
 utils.nnoremap('<leader>ul', '<cmd>Backgroun \'light\'<cr>')
 

@@ -46,6 +46,14 @@ require'lualine'.setup ({
   }
 })
 
+-- barbar.nvim
+-- local map = vim.api.nvim_set_keymap
+-- local opts = { noremap = true, silent = true }
+
+-- map('n', '<leader>i', ':BufferPrevious<CR>', opts)
+-- map('n', '<leader>o', ':BufferNext<CR>', opts)
+
+-- reach.nvim
 require('reach').setup({
   notifications = true
 })

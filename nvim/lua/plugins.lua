@@ -98,7 +98,10 @@ require('packer').startup(function()
   -- UI Enhancement & Themes
   use 'nvim-lualine/lualine.nvim'
   use 'NLKNguyen/papercolor-theme'
+  use 'folke/tokyonight.nvim'
   -- use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  -- use 'romgrk/barbar.nvim'
+  use 'gcmt/taboo.vim'
   use 'toppair/reach.nvim'
 
   -- Clipboard
