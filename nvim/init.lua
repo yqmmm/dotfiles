@@ -77,9 +77,6 @@ vim.cmd[[colorscheme PaperColor]]
 utils.nnoremap('<leader>ud', '<cmd>Backgroun \'dark\'<cr>')
 utils.nnoremap('<leader>ul', '<cmd>Backgroun \'light\'<cr>')
 
-gps = require("nvim-gps")
-gps.setup()
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
