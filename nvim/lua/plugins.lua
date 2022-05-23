@@ -97,12 +97,16 @@ require('packer').startup(function()
 
   -- UI Enhancement & Themes
   use 'nvim-lualine/lualine.nvim'
-  use 'NLKNguyen/papercolor-theme'
-  use 'folke/tokyonight.nvim'
+  use 'gcmt/taboo.vim'
+  -- Not sure about this one. Using telescope.nvim for now.
+  -- use 'toppair/reach.nvim'
+  -- I tried to use such "buffer line" plugins. But they are really "not vimy".
   -- use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   -- use 'romgrk/barbar.nvim'
-  use 'gcmt/taboo.vim'
-  use 'toppair/reach.nvim'
+
+  -- Color Scheme
+  use 'NLKNguyen/papercolor-theme'
+  use 'cocopon/iceberg.vim'
 
   -- Clipboard
   use 'ojroques/vim-oscyank'
