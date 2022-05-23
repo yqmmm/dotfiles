@@ -54,37 +54,37 @@ require'lualine'.setup ({
 -- map('n', '<leader>o', ':BufferNext<CR>', opts)
 
 -- reach.nvim
-require('reach').setup({
-  notifications = true
-})
-
-vim.keymap.set('n', '<leader>b', function()
-  -- default
-  local options = {
-    handle = 'dynamic',               -- 'bufnr' or 'dynamic' or 'auto'
-    show_icons = true,
-    show_modified = true,         -- Show buffer modified indicator
-    force_delete = {},            -- List of filetypes / buftypes to use
-                                  -- 'bdelete!' on, e.g. { 'terminal' }
-    filter = nil,                 -- Function taking bufnr as parameter,
-                                  -- returning true or false
-    sort = nil,                   -- Comparator function (bufnr, bufnr) -> bool
-    terminal_char = '\\',         -- Character to use for terminal buffer handles
-                                  -- when options.handle is 'dynamic'
-    grayout = true,               -- Gray out non matching entries
-    auto_exclude_handles = {},    -- A list of characters not to use as handles when
-                                  -- options.handle == 'auto', e.g. { '8', '9', 'j', 'k' }
-    previous = {
-      enable = true,              -- Mark last used buffers with specified chars and colors
-      depth = 2,                  -- Maximum number of buffers to mark
-      chars = { '•' },            -- Characters to use as markers,
-                                  -- last one is used when depth > #chars
-      groups = {                  -- Highlight groups for markers,
-        'String',                  -- last one is used when depth > #groups
-        'Comment',
-      },
-    },
-  }
-
-  require('reach').buffers(options)
-end)
+-- require('reach').setup({
+--   notifications = true
+-- })
+--
+-- vim.keymap.set('n', '<leader>b', function()
+--   -- default
+--   local options = {
+--     handle = 'dynamic',               -- 'bufnr' or 'dynamic' or 'auto'
+--     show_icons = true,
+--     show_modified = true,         -- Show buffer modified indicator
+--     force_delete = {},            -- List of filetypes / buftypes to use
+--                                   -- 'bdelete!' on, e.g. { 'terminal' }
+--     filter = nil,                 -- Function taking bufnr as parameter,
+--                                   -- returning true or false
+--     sort = nil,                   -- Comparator function (bufnr, bufnr) -> bool
+--     terminal_char = '\\',         -- Character to use for terminal buffer handles
+--                                   -- when options.handle is 'dynamic'
+--     grayout = true,               -- Gray out non matching entries
+--     auto_exclude_handles = {},    -- A list of characters not to use as handles when
+--                                   -- options.handle == 'auto', e.g. { '8', '9', 'j', 'k' }
+--     previous = {
+--       enable = true,              -- Mark last used buffers with specified chars and colors
+--       depth = 2,                  -- Maximum number of buffers to mark
+--       chars = { '•' },            -- Characters to use as markers,
+--                                   -- last one is used when depth > #chars
+--       groups = {                  -- Highlight groups for markers,
+--         'String',                  -- last one is used when depth > #groups
+--         'Comment',
+--       },
+--     },
+--   }
+--
+--   require('reach').buffers(options)
+-- end)
