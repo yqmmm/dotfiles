@@ -114,6 +114,7 @@ require('packer').startup(function()
   use 'nathangrigg/vim-beancount'
   use 'christoomey/vim-tmux-navigator'
   use 'voldikss/vim-floaterm'
+  use 'uga-rosa/utf8.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

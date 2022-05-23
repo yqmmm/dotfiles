@@ -11,18 +11,22 @@ vim.keymap.set('n', '<leader>n', ':NvimTreeFindFile<CR>')
 --- @param hide_width number hides component when window width is smaller then hide_width
 --- @param no_ellipsis boolean whether to disable adding '...' at end after truncation
 --- return function that can format the component accordingly
+local utf8 = require("utf8")
+
 local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   return function(str)
     local win_width = vim.fn.winwidth(0)
     if hide_width and win_width < hide_width then return ''
     elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-       -- return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
-       return (no_ellipsis and '' or '...') .. str:sub(#str - trunc_len + 1)
-       -- TODO: Support wide Unicode characters
+      if utf8.len(str) <= trunc_len then return str end
+      return (no_ellipsis and '' or '…') .. str:sub(utf8.offset(str, -trunc_len + 1))
     end
     return str
   end
 end
+
+gps = require("nvim-gps")
+gps.setup()
 
 require'lualine'.setup ({
   sections = {
