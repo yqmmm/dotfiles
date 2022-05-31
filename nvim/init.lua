@@ -118,3 +118,8 @@ utils.noremap('v', '<leader>s', ':lua require("spectre").open_visual()<CR>')
 -- require("bufferline").setup{
 --   always_show_bufferline = false,
 -- }
+
+vim.api.nvim_create_autocmd({"BufEnter"}, {
+  pattern = {"*.hh", "*.cc"},
+  command = "set tabstop=2 shiftwidth=2 expandtab",
+})
