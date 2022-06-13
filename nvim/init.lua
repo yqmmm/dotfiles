@@ -57,6 +57,7 @@ vim.o.splitbelow = true
 vim.g.updatetime = 100
 -- Other things
 vim.o.inccommand = 'split'
+vim.o.scrolloff=5
 
 utils.nnoremap('<leader>j', '<c-^>')
 
