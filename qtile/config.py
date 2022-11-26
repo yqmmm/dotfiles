@@ -118,8 +118,17 @@ for i in groups:
         ]
     )
 
+# Common layout settings.
+layout_theme = {
+        "border_width": 4,
+        "margin": 6,
+        # "border_focus": "e1acff",
+        "border_normal": "1D2330",
+        }
+
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(**layout_theme),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -137,6 +146,7 @@ layouts = [
 widget_defaults = dict(
     font="mono",
     fontsize=26,
+    icon_size=26,
     padding=12,
 )
 extension_defaults = widget_defaults.copy()
@@ -174,7 +184,7 @@ screens = [
                     #     ),
                     # ],
                 ),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
