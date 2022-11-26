@@ -42,6 +42,7 @@ pythonic:
 
 qtile:
 	mkdir -p ~/.config/qtile
-	[ -f ~/.config/qtile/config.toml ] || ln -s $(PWD)/qtile.py ~/.config/qtile/config.py
+	[ -f ~/.config/qtile/config.py ]    || ln -s $(PWD)/qtile/config.py    ~/.config/qtile/config.py
+	[ -f ~/.config/qtile/autostart.sh ] || ln -s $(PWD)/qtile/autostart.sh ~/.config/qtile/autostart.sh
 
-.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty
+.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty qtile
