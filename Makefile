@@ -40,4 +40,8 @@ pythonic:
 	[ -f ~/.config/pypoetry/config.toml ] || ln -s $(PWD)/pypoetry-config.toml ~/.config/pypoetry/config.toml
 	[ -f ~/.config/pycodestyle ] || ln -s $(PWD)/pycodestyle ~/.config/pycodestyle
 
+qtile:
+	mkdir -p ~/.config/qtile
+	[ -f ~/.config/qtile/config.toml ] || ln -s $(PWD)/qtile.py ~/.config/qtile/config.py
+
 .PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty
