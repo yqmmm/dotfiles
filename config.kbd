@@ -60,14 +60,14 @@ THE REFERENCE: https://github.com/kmonad/kmonad/blob/master/doc/quick-reference.
 (deflayer qwerty
   grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc
   @tat  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  lctl   a    s    d    f    g    h    j    k    l    ;    '    ret
+  lctl  a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft  z    x    c    v    b    n    m    ,    .    /    rsft
   lctl  lmet lalt           spc            ralt rmet cmp rctl
 )
 
 (deflayer vim
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    C-S-tab   C-tab    _    _    _    _
   _    _    _    _    _    _    KeyLeft  KeyDown KeyUp  KeyRight  _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _    _    _
