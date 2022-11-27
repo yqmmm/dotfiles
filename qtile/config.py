@@ -34,16 +34,18 @@ from libqtile.utils import guess_terminal
 
 # from qtile_extras.widget.decorations import BorderDecoration
 
-colors = [["#282c34", "#282c34"],
-          ["#1c1f24", "#1c1f24"],
-          ["#dfdfdf", "#dfdfdf"],
-          ["#ff6c6b", "#ff6c6b"],
-          ["#98be65", "#98be65"],
-          ["#da8548", "#da8548"],
-          ["#51afef", "#51afef"],
-          ["#c678dd", "#c678dd"],
-          ["#46d9ff", "#46d9ff"],
-          ["#a9a1e1", "#a9a1e1"]]
+# Color Definition
+cl_gray         = ["#282c34", "#282c34"]
+cl_another_gray = ["#1c1f24", "#1c1f24"]
+cl_white        = ["#dfdfdf", "#dfdfdf"]
+cl_red          = ["#881111", "#881111"]
+cl_light_red    = ["#ff6c6b", "#ff6c6b"]
+cl_green        = ["#98be65", "#98be65"]
+cl_orange       = ["#da8548", "#da8548"]
+cl_blue         = ["#51afef", "#51afef"]
+cl_purple       = ["#c678dd", "#c678dd"]
+cl_green_blue   = ["#46d9ff", "#46d9ff"]
+cl_blue_purple  = ["#a9a1e1", "#a9a1e1"]
 
 # Functions to move windows
 @lazy.function
@@ -59,45 +61,6 @@ def window_to_next_group(qtile):
     if qtile.current_window is not None and i != 9:
         qtile.current_window.togroup(qtile.groups[i + 1].name)
         qtile.current_screen.toggle_group(qtile.groups[i + 1])
-
-def init_widgets_list():
-    return [
-        widget.CurrentLayout(),
-        widget.GroupBox(),
-        widget.Prompt(),
-        widget.WindowName(),
-        widget.Chord(
-            chords_colors={
-                "launch": ("#ff0000", "#ffffff"),
-            },
-            name_transform=lambda name: name.upper(),
-        ),
-        widget.Volume(
-            foreground=colors[7],
-            # background=colors[0],
-            fmt="Vol: {}",
-            padding=5
-        ),
-        widget.Memory(
-            foreground=colors[9],
-            fmt="Mem: {}",
-            # padding=5,
-            # decorations = [
-            #     BorderDecoration(
-            #         colour=colors[9],
-            #         border_width=[0,0,2,0],
-            #         padding_x=5,
-            #         padding_y=None,
-            #     ),
-            # ],
-        ),
-        # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-        # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-        # widget.StatusNotifier(),
-        widget.Systray(),
-        widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-        # widget.QuickExit(),
-    ]
 
 mod = "mod4"
 terminal = guess_terminal()
@@ -147,6 +110,10 @@ keys = [
 
     # My Keymaps
     Key([mod], "f", lazy.window.cmd_toggle_floating(), desc="Toggle floating"),
+    Key([mod], "m",
+        lazy.layout.maximize(),
+        desc='toggle window between minimum and maximum sizes'
+    ),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -178,14 +145,13 @@ for i in groups:
 # Common layout settings.
 layout_theme = {
         "border_width": 4,
-        "margin": 6,
-        # "border_focus": "e1acff",
+        "margin": 8,
         "border_normal": "1D2330",
         }
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Columns(**layout_theme),
+    layout.Columns(**layout_theme, border_focus=cl_green, border_focus_stack=cl_red),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -205,7 +171,39 @@ widget_defaults = dict(
     fontsize=26,
     icon_size=28,
     padding=12,
+    background="#00000000",
 )
+
+def init_widgets_list():
+    return [
+        widget.CurrentLayout(),
+        widget.GroupBox(),
+        widget.Prompt(),
+        widget.WindowName(),
+        widget.Chord(
+            chords_colors={
+                "launch": ("#ff0000", "#ffffff"),
+            },
+            name_transform=lambda name: name.upper(),
+        ),
+        widget.Volume(
+            foreground=cl_purple,
+            fmt="Vol: {}",
+            padding=5
+        ),
+        widget.Memory(
+            foreground=cl_blue_purple,
+            fmt="Mem: {}",
+        ),
+        # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+        # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+        # widget.StatusNotifier(),
+        widget.Systray(),
+        widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+        # widget.QuickExit(),
+    ]
+
+
 extension_defaults = widget_defaults.copy()
 
 screens = [
@@ -214,8 +212,9 @@ screens = [
             init_widgets_list(),
             24,
             border_width=[6, 0, 8, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            background="#00000000",
         ),
+        wallpaper='~/Pictures/clouds-over-mountain.jpg',
     ),
 ]
 
