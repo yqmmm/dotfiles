@@ -55,7 +55,7 @@ THE REFERENCE: https://github.com/kmonad/kmonad/blob/master/doc/quick-reference.
 )
 
 (defalias
-  tat (tap-next-release tab (layer-toggle vim)))
+  tat (tap-hold-next-release 250 tab (layer-toggle vim)))
 
 (deflayer qwerty
   grv   1    2    3    4    5    6    7    8    9    0    -    =    bspc

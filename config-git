@@ -1,0 +1,2 @@
+git config --global user.name  "Qianmian Yu"
+git config --global user.email "im.qianmian.yu@gmail.com"

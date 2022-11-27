@@ -42,7 +42,18 @@ pythonic:
 
 qtile:
 	mkdir -p ~/.config/qtile
-	[ -f ~/.config/qtile/config.py ]    || ln -s $(PWD)/qtile/config.py    ~/.config/qtile/config.py
+	ln -s $(PWD)/qtile/config.py    ~/.config/qtile/config.py
 	[ -f ~/.config/qtile/autostart.sh ] || ln -s $(PWD)/qtile/autostart.sh ~/.config/qtile/autostart.sh
 
-.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty qtile
+kmonad:
+	sudo mkdir -p /etc/kmonad
+	[ -f /etc/kmonad/config.kbd ] || sudo ln -s $(PWD)/config.kbd /etc/kmonad/config.kbd
+
+font:
+	mkdir -p ~/.config/fontconfig
+	[ -f ~/.config/fontconfig/fonts.conf ] || ln -s $(PWD)/archlinux/fontconfig/fonts.conf ~/.config/fontconfig
+
+xr:
+	[ -f ~/.Xresources ] || ln -s $(PWD)/archlinux/gui/.Xresources ~/.Xresources
+
+.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty qtile kmonad font
