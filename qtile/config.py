@@ -215,7 +215,7 @@ def window_to_prev_group(qtile):
 @lazy.function
 def window_to_next_group(qtile):
     i = qtile.groups.index(qtile.current_group)
-    if qtile.current_window is not None and i != 6:
+    if qtile.current_window is not None and i != 9:
         qtile.current_window.togroup(qtile.groups[i + 1].name)
         qtile.current_screen.toggle_group(qtile.groups[i + 1])
 
