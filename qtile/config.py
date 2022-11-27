@@ -63,6 +63,9 @@ keys = [
     Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
+    # Move window
+    Key([mod, "shift"], "i", window_to_prev_group(), desc="Move window to the previous group"),
+    Key([mod, "shift"], "o", window_to_next_group(), desc="Move window to the next group"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
@@ -154,49 +157,68 @@ extension_defaults = widget_defaults.copy()
 screens = [
     Screen(
         top=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.Volume(
-                    foreground=colors[7],
-                    # background=colors[0],
-                    fmt="Vol: {}",
-                    padding=5
-                ),
-                widget.Memory(
-                    foreground=colors[9],
-                    fmt="Mem: {}",
-                    # padding=5,
-                    # decorations = [
-                    #     BorderDecoration(
-                    #         colour=colors[9],
-                    #         border_width=[0,0,2,0],
-                    #         padding_x=5,
-                    #         padding_y=None,
-                    #     ),
-                    # ],
-                ),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
-            ],
+            init_widgets_list(),
             24,
             border_width=[6, 0, 8, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
     ),
 ]
+
+def init_widgets_list():
+    return [
+        widget.CurrentLayout(),
+        widget.GroupBox(),
+        widget.Prompt(),
+        widget.WindowName(),
+        widget.Chord(
+            chords_colors={
+                "launch": ("#ff0000", "#ffffff"),
+            },
+            name_transform=lambda name: name.upper(),
+        ),
+        widget.Volume(
+            foreground=colors[7],
+            # background=colors[0],
+            fmt="Vol: {}",
+            padding=5
+        ),
+        widget.Memory(
+            foreground=colors[9],
+            fmt="Mem: {}",
+            # padding=5,
+            # decorations = [
+            #     BorderDecoration(
+            #         colour=colors[9],
+            #         border_width=[0,0,2,0],
+            #         padding_x=5,
+            #         padding_y=None,
+            #     ),
+            # ],
+        ),
+        # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+        # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+        # widget.StatusNotifier(),
+        widget.Systray(),
+        widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+        widget.QuickExit(),
+    ]
+
+# Functions to move windows
+@lazy.function
+def window_to_prev_group(qtile):
+    i = qtile.groups.index(qtile.current_group)
+    if qtile.current_window is not None and i != 0:
+        qtile.current_window.togroup(qtile.groups[i - 1].name)
+        qtile.current_screen.toggle_group(qtile.groups[i - 1])
+
+@lazy.function
+def window_to_next_group(qtile):
+    i = qtile.groups.index(qtile.current_group)
+    if qtile.current_window is not None and i != 6:
+        qtile.current_window.togroup(qtile.groups[i + 1].name)
+        qtile.current_screen.toggle_group(qtile.groups[i + 1])
+
 
 # Drag floating layouts.
 mouse = [

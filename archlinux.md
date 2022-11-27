@@ -23,3 +23,7 @@ sudo pacman -S polkit polkit-kde-agent
 ```
 
 Haven't done a fresh installation. But maybe I need to install polkit before 1password to make everything work?
+
+# ScreenShots
+
+`import` from ImageMagick let you select a region of the screen.
