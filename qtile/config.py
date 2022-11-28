@@ -151,7 +151,12 @@ layout_theme = {
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Columns(**layout_theme, border_focus=cl_green, border_focus_stack=cl_red),
+    layout.Columns(
+        **layout_theme,
+        border_focus = cl_green,
+        border_focus_stack = cl_red,
+        insert_position = 1, # insert after current window, instead of before
+    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -167,7 +172,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="mono",
+    font="sans",
     fontsize=26,
     icon_size=28,
     padding=14,
@@ -179,7 +184,7 @@ def init_widgets_list():
         widget.CurrentLayout(),
         widget.GroupBox(),
         widget.Prompt(),
-        widget.WindowName(),
+        widget.WindowName(font='sans'),
         widget.Chord(
             chords_colors={
                 "launch": ("#ff0000", "#ffffff"),
@@ -191,7 +196,7 @@ def init_widgets_list():
             distro = "Arch_yay",
             no_update_string = "No updates",
             display_format = "Updates: {updates} ",
-            foreground = colors[5],
+            # foreground = colors[5],
             mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("alacritty" + ' -e sudo pacman -Syu')},
             padding = 5,
         ),

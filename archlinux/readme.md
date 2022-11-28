@@ -34,6 +34,7 @@ sudo pacman -S polkit polkit-gnome
 # Font
 
 Mono: `ttf-jetbrains-mono`
+Sans: `ttf-cantarell`
 Chinese: `wqy-microhei`
 
 TODO: Explore more.
