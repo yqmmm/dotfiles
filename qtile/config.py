@@ -144,10 +144,10 @@ for i in groups:
 
 # Common layout settings.
 layout_theme = {
-        "border_width": 4,
-        "margin": 8,
-        "border_normal": "1D2330",
-        }
+    "border_width": 4,
+    "margin": 6,
+    "border_normal": "1D2330",
+}
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
@@ -170,7 +170,7 @@ widget_defaults = dict(
     font="mono",
     fontsize=26,
     icon_size=28,
-    padding=12,
+    padding=14,
     background="#00000000",
 )
 
@@ -186,14 +186,23 @@ def init_widgets_list():
             },
             name_transform=lambda name: name.upper(),
         ),
+        widget.CheckUpdates(
+            update_interval = 1800,
+            distro = "Arch_yay",
+            no_update_string = "No updates",
+            display_format = "Updates: {updates} ",
+            foreground = colors[5],
+            mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("alacritty" + ' -e sudo pacman -Syu')},
+            padding = 5,
+        ),
         widget.Volume(
             foreground=cl_purple,
-            fmt="Vol: {}",
+            fmt="Vol:{}",
             padding=5
         ),
         widget.Memory(
             foreground=cl_blue_purple,
-            fmt="Mem: {}",
+            fmt="Mem:{}",
         ),
         # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
         # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
@@ -210,7 +219,7 @@ screens = [
     Screen(
         top=bar.Bar(
             init_widgets_list(),
-            24,
+            26,
             border_width=[6, 0, 8, 0],  # Draw top and bottom borders
             background="#00000000",
         ),
