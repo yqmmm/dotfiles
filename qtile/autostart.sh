@@ -3,3 +3,5 @@
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 fcitx5 &
+
+1password --silent &

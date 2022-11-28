@@ -24,6 +24,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# DistroTube's config: https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/qtile/config.py
+
 import os
 import subprocess
 
@@ -179,27 +181,38 @@ widget_defaults = dict(
     background="#00000000",
 )
 
+def parse_text(text):
+    if "Firefox" in text:
+        return "Firefox"
+    return text
+
 def init_widgets_list():
     return [
         widget.CurrentLayout(),
         widget.GroupBox(),
         widget.Prompt(),
-        widget.WindowName(font='sans'),
+        widget.TaskList(
+            fontsize=18,
+            margin=1,
+            padding=12,
+            parse_text=parse_text
+        ),
+        # widget.WindowName(font='sans'),
         widget.Chord(
             chords_colors={
                 "launch": ("#ff0000", "#ffffff"),
             },
             name_transform=lambda name: name.upper(),
         ),
-        widget.CheckUpdates(
-            update_interval = 1800,
-            distro = "Arch_yay",
-            no_update_string = "No updates",
-            display_format = "Updates: {updates} ",
-            # foreground = colors[5],
-            mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("alacritty" + ' -e sudo pacman -Syu')},
-            padding = 5,
-        ),
+        # widget.CheckUpdates(
+        #     update_interval = 1800,
+        #     distro = "Arch_yay",
+        #     no_update_string = "No updates",
+        #     display_format = "Updates: {updates} ",
+        #     # foreground = colors[5],
+        #     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("alacritty" + ' -e sudo pacman -Syu')},
+        #     padding = 5,
+        # ),
         widget.Volume(
             foreground=cl_purple,
             fmt="Vol:{}",
@@ -224,7 +237,7 @@ screens = [
     Screen(
         top=bar.Bar(
             init_widgets_list(),
-            26,
+            50,
             border_width=[6, 0, 8, 0],  # Draw top and bottom borders
             background="#00000000",
         ),
