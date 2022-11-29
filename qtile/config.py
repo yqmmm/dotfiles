@@ -116,6 +116,8 @@ keys = [
         lazy.layout.maximize(),
         desc='toggle window between minimum and maximum sizes'
     ),
+    Key([mod], "Left", lazy.screen.prev_group(), desc="Move focus up"),
+    Key([mod], "Right", lazy.screen.next_group(), desc="Move focus up"),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -188,7 +190,10 @@ def parse_text(text):
 
 def init_widgets_list():
     return [
-        widget.CurrentLayout(),
+        widget.CurrentLayout(
+            fmt="{:^7s}", # Fixed length and align center
+            font="mono"   # So it's fixed length
+        ),
         widget.GroupBox(),
         widget.Prompt(),
         widget.TaskList(
