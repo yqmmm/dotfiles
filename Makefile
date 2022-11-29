@@ -56,4 +56,7 @@ font:
 xr:
 	[ -f ~/.Xresources ] || ln -s $(PWD)/archlinux/gui/.Xresources ~/.Xresources
 
+rofi:
+	[ -f ~/.config/rofi/config.rasi ] || ln -s $(PWD)/archlinux/rofi.rasi ~/.config/rofi/config.rasi
+
 .PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty qtile kmonad font

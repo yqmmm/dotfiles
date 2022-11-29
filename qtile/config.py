@@ -29,7 +29,7 @@
 import os
 import subprocess
 
-from libqtile import bar, layout, widget, hook
+from libqtile import bar, layout, widget, hook, extension
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
@@ -108,7 +108,6 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 
     # My Keymaps
     Key([mod], "f", lazy.window.cmd_toggle_floating(), desc="Toggle floating"),
@@ -118,6 +117,10 @@ keys = [
     ),
     Key([mod], "Left", lazy.screen.prev_group(), desc="Move focus up"),
     Key([mod], "Right", lazy.screen.next_group(), desc="Move focus up"),
+    
+    # rofi
+    Key([mod], "r", lazy.spawn("rofi -show run")),
+    Key([mod], "p", lazy.spawn("rofi -show window")),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -180,7 +183,6 @@ widget_defaults = dict(
     fontsize=26,
     icon_size=28,
     padding=14,
-    background="#00000000",
 )
 
 def parse_text(text):
@@ -244,7 +246,6 @@ screens = [
             init_widgets_list(),
             50,
             border_width=[6, 0, 8, 0],  # Draw top and bottom borders
-            background="#00000000",
         ),
         wallpaper='~/Pictures/clouds-over-mountain.jpg',
     ),

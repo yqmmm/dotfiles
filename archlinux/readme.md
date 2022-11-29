@@ -85,3 +85,16 @@ I used the open source driver installed by archinstall.
 mesa-vdpau
 ```
 
+# MPRIS
+
+MPRIS control things like `play`, `pause`, `next`. MPRIS is implemeted by clients like browsers and video player. MPRIS uses D-Bus.
+
+Anyway, just use `playerctl`.
+
+# xbindkeys
+
+Another way to customize things.
+
+This is done at the X system level.
+
+Just refer to arch wiki: https://wiki.archlinux.org/title/Xbindkeys
