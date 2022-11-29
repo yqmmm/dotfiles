@@ -25,12 +25,17 @@
 # SOFTWARE.
 
 # DistroTube's config: https://gitlab.com/dwt1/dotfiles/-/blob/master/.config/qtile/config.py
+# DEPENDENCIES:
+# 1. alacritty
+# 2. rofi
+# 3. Wallpaper image.
+# 4. Some packages required by qtile widgets.
 
 import os
 import subprocess
 
 from libqtile import bar, layout, widget, hook, extension
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -112,7 +117,7 @@ keys = [
     # My Keymaps
     Key([mod], "f", lazy.window.cmd_toggle_floating(), desc="Toggle floating"),
     Key([mod], "m",
-        lazy.layout.maximize(),
+        lazy.layout.toggle_maximize(),
         desc='toggle window between minimum and maximum sizes'
     ),
     Key([mod], "Left", lazy.screen.prev_group(), desc="Move focus up"),
@@ -136,23 +141,34 @@ for i in groups:
                 desc="Switch to group {}".format(i.name),
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
+            # Key(
+            #     [mod, "shift"],
+            #     i.name,
+            #     lazy.window.togroup(i.name, switch_group=True),
+            #     desc="Switch to & move focused window to group {}".format(i.name),
+            # ),
             # Or, use below if you prefer not to switch to that group.
             # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+                desc="move focused window to group {}".format(i.name)),
         ]
     )
 
+# After adding key bindings, we can add a ScratchPad.
+groups.append(
+    ScratchPad("scratchpad", [
+        DropDown("term", terminal, opacity=0.7),
+    ])
+)
+
+keys.extend([
+    Key([mod], "t", lazy.group["scratchpad"].dropdown_toggle("term")),
+])
+
 # Common layout settings.
 layout_theme = {
-    "border_width": 4,
-    "margin": 6,
+    "border_width": 6,
+    "margin": 4,
     "border_normal": "1D2330",
 }
 
@@ -223,7 +239,7 @@ def init_widgets_list():
         widget.Volume(
             foreground=cl_purple,
             fmt="Vol:{}",
-            padding=5
+            padding=5,
         ),
         widget.Memory(
             foreground=cl_blue_purple,
