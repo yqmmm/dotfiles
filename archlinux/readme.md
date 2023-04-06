@@ -36,6 +36,7 @@ sudo pacman -S polkit polkit-gnome
 Mono: `ttf-jetbrains-mono`
 Sans: `ttf-cantarell`
 Chinese: `wqy-microhei`
+Nerd: `nerd-fonts-jetbrains-mono`
 
 TODO: Explore more.
 
@@ -95,6 +96,6 @@ Anyway, just use `playerctl`.
 
 Another way to customize things.
 
-This is done at the X system level.
+This is done at the X system level. No daemon is running for this to work.
 
 Just refer to arch wiki: https://wiki.archlinux.org/title/Xbindkeys

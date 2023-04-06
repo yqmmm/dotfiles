@@ -64,7 +64,7 @@ require('packer').startup(function()
     'numToStr/Comment.nvim',
   }
   use 'tpope/vim-surround'
-  use 'wakatime/vim-wakatime'
+  -- use 'wakatime/vim-wakatime'
   use {'dstein64/vim-startuptime', opt=true}
   use 'windwp/nvim-autopairs'
   use 'ggandor/lightspeed.nvim'

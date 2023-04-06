@@ -95,6 +95,7 @@ vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r
 require('Comment').setup()
 
 -- vim-oscyank
+vim.g['oscyank_term'] = 'default'
 utils.noremap('v', '<leader>y', ':OSCYank<CR>')
 -- Yank relative path of current buffer (vimscript)
 -- let @" = expand("%")

@@ -110,12 +110,13 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    # Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
 
     # My Keymaps
-    Key([mod], "f", lazy.window.cmd_toggle_floating(), desc="Toggle floating"),
+    Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod], "m",
         lazy.layout.toggle_maximize(),
         desc='toggle window between minimum and maximum sizes'
@@ -157,7 +158,7 @@ for i in groups:
 # After adding key bindings, we can add a ScratchPad.
 groups.append(
     ScratchPad("scratchpad", [
-        DropDown("term", terminal, opacity=0.7),
+        DropDown("term", terminal, opacity=0.7, height=0.8),
     ])
 )
 
@@ -218,7 +219,8 @@ def init_widgets_list():
             fontsize=18,
             margin=1,
             padding=12,
-            parse_text=parse_text
+            parse_text=parse_text,
+            theme_mode="fallback",
         ),
         # widget.WindowName(font='sans'),
         widget.Chord(
