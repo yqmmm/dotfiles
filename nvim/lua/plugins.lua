@@ -82,6 +82,10 @@ require('packer').startup(function()
     run = 'make'
   }
 
+  -- QuickFix
+  -- TODO: https://www.reddit.com/r/neovim/comments/ngtukc/is_there_a_plugin_close_to_vs_code_search/
+  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+
   -- File Explorer
    use {
     'kyazdani42/nvim-tree.lua',
