@@ -25,8 +25,8 @@ local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
   end
 end
 
-gps = require("nvim-gps")
-gps.setup()
+-- gps = require("nvim-gps")
+-- gps.setup()
 
 require'lualine'.setup ({
   sections = {
@@ -43,10 +43,10 @@ require'lualine'.setup ({
         shorting_target = 80,
       }
     },
-    -- lualine_x = {'filetype'},
-    lualine_x = {
-      { gps.get_location, cond = gps.is_available, fmt=trunc(130, 30, 80) },
-    }
+    lualine_x = {'filetype'},
+    -- lualine_x = {
+    --   { gps.get_location, cond = gps.is_available, fmt=trunc(130, 30, 80) },
+    -- }
   }
 })
 

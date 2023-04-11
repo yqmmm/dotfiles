@@ -5,9 +5,6 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-# Turn off rm -i
-zstyle ':prezto:module:utility' safe-ops no
-
 #
 # General
 #
@@ -41,12 +38,9 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt' \
-  'autosuggestions' \
-  'fasd' \
-  'syntax-highlighting' \
   'history-substring-search' \
-  'git'
+  'prompt' \
+  'autosuggestions'
 
 #
 # Autosuggestions
@@ -59,7 +53,7 @@ zstyle ':prezto:load' pmodule \
 # Completions
 #
 
-# Set the entries to ignore in static */etc/hosts* for host completion.
+# Set the entries to ignore in static '/etc/hosts' for host completion.
 # zstyle ':prezto:module:completion:*:hosts' etc-host-ignores \
 #   '0.0.0.0' '127.0.0.1'
 
@@ -71,7 +65,7 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Auto convert .... to ../..
-zstyle ':prezto:module:editor' dot-expansion 'yes'
+# zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Allow the zsh prompt context to be shown.
 #zstyle ':prezto:module:editor' ps-context 'yes'
@@ -89,6 +83,19 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set the command prefix on non-GNU systems.
 # zstyle ':prezto:module:gnu-utility' prefix 'g'
+
+#
+# History
+#
+
+# Set the file to save the history in when an interactive shell exits.
+# zstyle ':prezto:module:history' histfile "${ZDOTDIR:-$HOME}/.zsh_history"
+
+# Set the maximum  number  of  events  stored  in  the  internal history list.
+# zstyle ':prezto:module:history' histsize 10000
+
+# Set the maximum number of history events to save in the history file.
+# zstyle ':prezto:module:history' savehist 10000
 
 #
 # History Substring Search
@@ -232,4 +239,4 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # Enabled safe options. This aliases cp, ln, mv and rm so that they prompt
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
-# zstyle ':prezto:module:utility' safe-ops 'yes'
+zstyle ':prezto:module:utility' safe-ops 'no'

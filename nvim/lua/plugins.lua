@@ -57,7 +57,7 @@ require('packer').startup(function()
     run = ':TSUpdate'
   }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use "SmiteshP/nvim-gps"
+  -- use "SmiteshP/nvim-gps"
 
   -- Core Enhancement
   use {
@@ -77,7 +77,10 @@ require('packer').startup(function()
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use 'windwp/nvim-spectre'
-
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make'
+  }
 
   -- File Explorer
    use {

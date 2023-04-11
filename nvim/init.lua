@@ -28,6 +28,7 @@ vim.wo.number = true
 -- Search
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.api.nvim_set_keymap('n', '/', '/\\v', { noremap = true })
 -- Tabs
 vim.o.expandtab = true
 vim.o.tabstop = 2
