@@ -23,6 +23,8 @@ vim.keymap.set('n', '<leader>cp', '<cmd>Telescope lsp_dynamic_workspace_symbols<
 vim.keymap.set('n', '<leader>cw', '<cmd>Telescope lsp_document_symbols<cr>')
 vim.keymap.set('n', '<leader>ct', '<cmd>Telescope treesitter<cr>')
 
+local lga_actions = require("telescope-live-grep-args.actions")
+
 require('telescope').setup {
   defaults = {
     layout_strategy = "flex",
@@ -32,5 +34,15 @@ require('telescope').setup {
       },
     },
   },
+  extensions = {
+    live_grep_args = {
+      mappings = {
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+        }
+      }
+    }
+  }
 }
 
+require('telescope').load_extension('live_grep_args')

@@ -58,7 +58,7 @@ vim.o.splitbelow = true
 vim.g.updatetime = 100
 -- Other things
 vim.o.inccommand = 'split'
-vim.o.scrolloff=5
+-- vim.o.scrolloff=5 -- save 5 lines when zt and zb
 
 utils.nnoremap('<leader>j', '<c-^>')
 
