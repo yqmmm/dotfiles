@@ -74,7 +74,11 @@ require('packer').startup(function()
   -- Fuzzy Finder
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-live-grep-args.nvim' },
+      { 'princejoogie/dir-telescope.nvim' }
+    }
   }
   use 'windwp/nvim-spectre'
   use {
