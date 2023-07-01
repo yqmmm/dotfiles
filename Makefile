@@ -59,4 +59,7 @@ xr:
 rofi:
 	[ -f ~/.config/rofi/config.rasi ] || ln -s $(PWD)/archlinux/rofi.rasi ~/.config/rofi/config.rasi
 
+zsh:
+	zsh ./zsh/install.sh
+
 .PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty qtile kmonad font
