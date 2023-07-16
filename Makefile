@@ -60,6 +60,10 @@ rofi:
 	[ -f ~/.config/rofi/config.rasi ] || ln -s $(PWD)/archlinux/rofi.rasi ~/.config/rofi/config.rasi
 
 zsh:
-	zsh ./zsh/install.sh
+	[ -d ~/.zprezto ] || git clone --recursive https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto"
+	for rcfile in zlogin zlogout zpreztorc zprofile zshev zshrc; do \
+		rm ~/.$$rcfile; \
+		ln -s ~/.zprezto/runcoms/$$rcfile ~/.$$rcfile ; \
+	done
 
-.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty qtile kmonad font
+.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty qtile kmonad font zsh
