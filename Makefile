@@ -66,4 +66,8 @@ zsh:
 		ln -s ~/.zprezto/runcoms/$$rcfile ~/.$$rcfile ; \
 	done
 
+git:
+	git config --global user.name "Qianmian Yu"
+	git config --global user.email "im.qianmian.yu@gmail.com"
+
 .PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty qtile kmonad font zsh
