@@ -1,139 +1,100 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+-- vim.cmd [[packadd packer.nvim]]
 
-require('packer').startup(function()
-  -- Modified from https://github.com/tjdevries/config_manager.git
-  local local_use = function(first, second, opts)
-    opts = opts or {}
-
-    local plug_path, home
-    if second == nil then
-      plug_path = first
-      home = "yqmmm"
-    else
-      plug_path = second
-      home = first
-    end
-
-    if vim.fn.isdirectory(vim.fn.expand("~/plugins/" .. plug_path)) == 1 then
-      opts[1] = "~/plugins/" .. plug_path
-    else
-      opts[1] = string.format("%s/%s", home, plug_path)
-    end
-
-    use(opts)
-  end
-
-  local_use 'color-memoize.nvim'
-
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+return {
+  'yqmmm/color-memoize.nvim',
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
-  use 'ray-x/lsp_signature.nvim' -- TODO: Try lsp-saga
-  use 'jose-elias-alvarez/null-ls.nvim'
-  use 'RRethy/vim-illuminate'
+  'neovim/nvim-lspconfig',
+  'ray-x/lsp_signature.nvim', -- TODO: Try lsp-saga
+  'jose-elias-alvarez/null-ls.nvim',
+  'RRethy/vim-illuminate',
 
   -- Completion
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
-  use 'hrsh7th/cmp-buffer' -- cmp buffer source
-  use 'hrsh7th/cmp-path' -- cmp path source
+  'hrsh7th/nvim-cmp', -- Autocompletion plugin
+  'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+  'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+  'L3MON4D3/LuaSnip', -- Snippets plugin
+  'hrsh7th/cmp-buffer', -- cmp buffer source
+  'hrsh7th/cmp-path', -- cmp path source
 
   -- Use rust-analyzer's LSP extension
-  use 'simrat39/rust-tools.nvim'
+  'simrat39/rust-tools.nvim',
 
   -- Copilot
-  use 'github/copilot.vim'
+  'github/copilot.vim',
 
   -- Syntax Highlight
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
-  -- use "SmiteshP/nvim-gps"
+    build = ':TSUpdate'
+  },
+  'nvim-treesitter/nvim-treesitter-textobjects',
+  -- "SmiteshP/nvim-gps"
 
   -- Core Enhancement
-  use {
-    'numToStr/Comment.nvim',
-  }
-  use 'tpope/vim-surround'
-  -- use 'wakatime/vim-wakatime'
-  use {'dstein64/vim-startuptime', opt=true}
-  use 'windwp/nvim-autopairs'
-  use 'ggandor/lightspeed.nvim'
-  -- Lua
-  use 'folke/todo-comments.nvim'
+  'numToStr/Comment.nvim',
+  'tpope/vim-surround',
+  'windwp/nvim-autopairs',
+  'ggandor/lightspeed.nvim',
+  'folke/todo-comments.nvim',
 
-  -- Fuzzy Finder
-  use {
+  -- Telescope
+  {
     'nvim-telescope/telescope.nvim',
-    requires = {
+    dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-live-grep-args.nvim' },
       { 'princejoogie/dir-telescope.nvim' }
     }
-  }
-  use 'windwp/nvim-spectre'
-  use {
+  },
+  'windwp/nvim-spectre',
+  {
     'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make'
-  }
+    build = 'make'
+  },
 
   -- QuickFix
   -- TODO: https://www.reddit.com/r/neovim/comments/ngtukc/is_there_a_plugin_close_to_vs_code_search/
-  use {'kevinhwang91/nvim-bqf', ft = 'qf'}
+  {'kevinhwang91/nvim-bqf', ft = 'qf'},
 
   -- File Explorer
-   use {
+   {
     'kyazdani42/nvim-tree.lua',
-    requires = 'kyazdani42/nvim-web-devicons',
-  }
+    dependencies = 'kyazdani42/nvim-web-devicons',
+  },
 
   -- Git
-  use 'tpope/vim-fugitive'
-  use {
+  'tpope/vim-fugitive',
+  {
     'lewis6991/gitsigns.nvim',
-    requires = {
+    dependencies = {
       'nvim-lua/plenary.nvim'
     },
-  }
-  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+  },
+  { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
 
   -- UI Enhancement & Themes
-  use 'nvim-lualine/lualine.nvim'
-  use 'gcmt/taboo.vim'
+  'nvim-lualine/lualine.nvim',
+  'gcmt/taboo.vim',
   -- Not sure about this one. Using telescope.nvim for now.
-  -- use 'toppair/reach.nvim'
-  -- I tried to use such "buffer line" plugins. But they are really "not vimy".
-  -- use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-  -- use 'romgrk/barbar.nvim'
+  -- 'toppair/reach.nvim'
 
   -- Color Scheme
-  use 'NLKNguyen/papercolor-theme'
-  use 'cocopon/iceberg.vim'
+  'NLKNguyen/papercolor-theme',
+  'cocopon/iceberg.vim',
 
   -- Clipboard
-  use 'ojroques/vim-oscyank'
+  'ojroques/vim-oscyank',
 
   -- Magic
-  use 'lewis6991/impatient.nvim'
+  'lewis6991/impatient.nvim',
 
   -- Misc
-  use 'nathangrigg/vim-beancount'
-  use 'christoomey/vim-tmux-navigator'
-  use 'voldikss/vim-floaterm'
-  use 'uga-rosa/utf8.nvim'
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+  'nathangrigg/vim-beancount',
+  'christoomey/vim-tmux-navigator',
+  'voldikss/vim-floaterm',
+  'uga-rosa/utf8.nvim',
+}
