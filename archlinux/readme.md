@@ -37,6 +37,7 @@ Mono: `ttf-jetbrains-mono`
 Sans: `ttf-cantarell`
 Chinese: `wqy-microhei`
 Nerd: `nerd-fonts-jetbrains-mono`
+Emoji: `yay noto-fonts-emoji`
 
 TODO: Explore more.
 

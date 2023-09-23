@@ -69,7 +69,8 @@ def window_to_next_group(qtile):
         qtile.current_window.togroup(qtile.groups[i + 1].name)
         qtile.current_screen.toggle_group(qtile.groups[i + 1])
 
-mod = "mod4"
+#mod = "mod4" # win/super
+mod = "mod1" # alt
 terminal = guess_terminal()
 
 keys = [
