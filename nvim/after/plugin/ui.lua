@@ -47,7 +47,8 @@ require'lualine'.setup ({
     -- lualine_x = {
     --   { gps.get_location, cond = gps.is_available, fmt=trunc(130, 30, 80) },
     -- }
-  }
+  },
+  theme = 'vscode',
 })
 
 -- barbar.nvim

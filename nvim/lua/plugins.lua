@@ -10,7 +10,6 @@ return {
   'neovim/nvim-lspconfig',
   'ray-x/lsp_signature.nvim', -- TODO: Try lsp-saga
   'jose-elias-alvarez/null-ls.nvim',
-  'RRethy/vim-illuminate',
 
   -- Completion
   'hrsh7th/nvim-cmp', -- Autocompletion plugin
@@ -50,7 +49,6 @@ return {
       { 'princejoogie/dir-telescope.nvim' }
     }
   },
-  'windwp/nvim-spectre',
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make'
@@ -85,15 +83,12 @@ return {
   -- Color Scheme
   'NLKNguyen/papercolor-theme',
   'cocopon/iceberg.vim',
+  'Mofiqul/vscode.nvim',
 
   -- Clipboard
   'ojroques/vim-oscyank',
 
-  -- Magic
-  'lewis6991/impatient.nvim',
-
   -- Misc
-  'nathangrigg/vim-beancount',
   'christoomey/vim-tmux-navigator',
   'voldikss/vim-floaterm',
   'uga-rosa/utf8.nvim',
