@@ -219,8 +219,8 @@ layouts = [
 
 widget_defaults = dict(
     font="sans",
-    fontsize=26,
-    icon_size=28,
+    fontsize=24,
+    icon_size=24,
     padding=14,
 )
 
@@ -238,7 +238,7 @@ def init_widgets_list(is_primary):
         widget.GroupBox(highlight_method='block'),
         widget.Prompt(),
         widget.TaskList(
-            fontsize=18,
+            fontsize=20,
             margin=1,
             padding=12,
             parse_text=parse_text,
