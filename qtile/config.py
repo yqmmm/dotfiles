@@ -74,18 +74,17 @@ def rename_group(qtile):
     from libqtile.log_utils import logger
 
     def callback(text):
-        logger.warning('callback', text)
-        # if resp:
-        #     idx = qtile.groups.index(qtile.current_group)
-        #     if idx is not None:
-        #         qtile.groups[idx].name = resp
-        #         qtile.groups[idx].cmd_rename(resp)
-        #         qtile.current_screen.group = qtile.groups[idx]
-        #         qtile.cmd_draw_text(qtile.current_screen.group.name)
-        #         qtile.cmd_spawn('xsetroot -name "{}"'.format(qtile.current_screen.group.name))
+        if text:
+            idx = qtile.groups.index(qtile.current_group)
+            if idx is not None:
+                qtile.groups[idx].set_label(f"{idx} [{text}]")
 
-    prompt = qtile.widgets_map['prompt']
-    prompt.start_input('Rename group to', callback)
+    try:
+        mb = qtile.widgets_map['prompt']
+        mb.start_input('Rename current group to', callback, None)
+    except KeyError:
+        logger.error("No widget named '%s' present.", widget)
+
 
 #mod = "mod4" # win/super
 mod = "mod1" # alt
