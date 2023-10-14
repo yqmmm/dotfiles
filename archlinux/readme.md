@@ -56,7 +56,9 @@ XMODIFIERS=@im=fcitx
 SDL_IM_MODULE=fcitx
 ```
 
-Use `fcitx5-qt` to configure.
+Use `fcitx5-qt` to configure. Add `Pinyin` to keyboards.
+
+By default use `Control + Space` to switch.
 
 # Bluetooth
 

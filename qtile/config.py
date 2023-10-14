@@ -69,6 +69,24 @@ def window_to_next_group(qtile):
         qtile.current_window.togroup(qtile.groups[i + 1].name)
         qtile.current_screen.toggle_group(qtile.groups[i + 1])
 
+@lazy.function
+def rename_group(qtile):
+    from libqtile.log_utils import logger
+
+    def callback(text):
+        logger.warning('callback', text)
+        # if resp:
+        #     idx = qtile.groups.index(qtile.current_group)
+        #     if idx is not None:
+        #         qtile.groups[idx].name = resp
+        #         qtile.groups[idx].cmd_rename(resp)
+        #         qtile.current_screen.group = qtile.groups[idx]
+        #         qtile.cmd_draw_text(qtile.current_screen.group.name)
+        #         qtile.cmd_spawn('xsetroot -name "{}"'.format(qtile.current_screen.group.name))
+
+    prompt = qtile.widgets_map['prompt']
+    prompt.start_input('Rename group to', callback)
+
 #mod = "mod4" # win/super
 mod = "mod1" # alt
 terminal = guess_terminal()
@@ -124,6 +142,10 @@ keys = [
     ),
     Key([mod], "Left", lazy.screen.prev_group(), desc="Move focus up"),
     Key([mod], "Right", lazy.screen.next_group(), desc="Move focus up"),
+
+    Key([mod], "period", lazy.next_screen(), desc='Next monitor'),
+
+    Key([mod], "x", rename_group(), desc="Rename group"),
     
     # rofi
     Key([mod], "r", lazy.spawn("rofi -show run")),
@@ -208,13 +230,13 @@ def parse_text(text):
         return "Firefox"
     return text
 
-def init_widgets_list():
-    return [
+def init_widgets_list(is_primary):
+    widges = [
         widget.CurrentLayout(
             fmt="{:^7s}", # Fixed length and align center
             font="mono"   # So it's fixed length
         ),
-        widget.GroupBox(),
+        widget.GroupBox(highlight_method='block'),
         widget.Prompt(),
         widget.TaskList(
             fontsize=18,
@@ -246,15 +268,19 @@ def init_widgets_list():
         ),
         widget.Memory(
             foreground=cl_blue_purple,
-            fmt="Mem:{}",
+            fmt='Mem:{}',
+            format='{MemUsed:.1f}{mm}/{MemTotal:.0f}{mm}',
+            measure_mem='G',
         ),
         # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
         # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
         # widget.StatusNotifier(),
-        widget.Systray(),
+        (widget.Systray() if is_primary else None),
         widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
         # widget.QuickExit(),
     ]
+
+    return [w for w in widges if w is not None]
 
 
 extension_defaults = widget_defaults.copy()
@@ -262,11 +288,19 @@ extension_defaults = widget_defaults.copy()
 screens = [
     Screen(
         top=bar.Bar(
-            init_widgets_list(),
+            init_widgets_list(True),
             50,
             border_width=[6, 0, 8, 0],  # Draw top and bottom borders
         ),
-        wallpaper='~/Pictures/clouds-over-mountain.jpg',
+        # wallpaper='~/Pictures/clouds-over-mountain.jpg',
+    ),
+    Screen(
+        top=bar.Bar(
+            init_widgets_list(False),
+            50,
+            border_width=[6, 0, 8, 0],  # Draw top and bottom borders
+        ),
+        # wallpaper='~/Pictures/clouds-over-mountain.jpg',
     ),
 ]
 
