@@ -53,7 +53,17 @@ local make_on_attach = function(illuminate)
 end
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'gopls', 'pylsp', 'rnix', 'solargraph', 'clangd', 'pyright', 'ocamllsp' }
+local servers = {
+	'gopls',
+	'pylsp',
+	'rnix',
+	'solargraph',
+	'clangd',
+	'pyright',
+	'ocamllsp',
+	'gopls',
+}
+
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     autostart = false,

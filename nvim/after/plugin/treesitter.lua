@@ -2,7 +2,7 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {"c", "bash", "python", "go", "lua", "toml", 
                       "json", "nix", "java", "rust", "fish",
-                      "javascript"},
+                      "javascript", "yaml"},
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
