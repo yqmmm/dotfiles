@@ -23,6 +23,16 @@ vim.keymap.set('n', '<leader>cp', '<cmd>Telescope lsp_dynamic_workspace_symbols<
 vim.keymap.set('n', '<leader>cw', '<cmd>Telescope lsp_document_symbols<cr>')
 vim.keymap.set('n', '<leader>ct', '<cmd>Telescope treesitter<cr>')
 
+vim.keymap.set('n', 'gi', function()
+  local dropdown = require"telescope.themes".get_dropdown({
+    fname_width = 50,
+    layout_config = {
+      width = 0.9,
+    },
+  })
+  require('telescope.builtin').lsp_implementations(dropdown)
+end)
+
 local lga_actions = require("telescope-live-grep-args.actions")
 
 require('telescope').setup {

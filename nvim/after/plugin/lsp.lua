@@ -21,7 +21,6 @@ set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 -- But without overriding old gd
 set_keymap('n', 'gvd', ':only<CR>:vsplit<CR>gd', { silent=true })
 set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 set_keymap('n', 'gx', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
