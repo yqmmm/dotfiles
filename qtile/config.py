@@ -77,7 +77,7 @@ def rename_group(qtile):
         if text:
             idx = qtile.groups.index(qtile.current_group)
             if idx is not None:
-                qtile.groups[idx].set_label(f"{idx} [{text}]")
+                qtile.groups[idx].set_label(f"{idx+1} [{text}]")
 
     try:
         mb = qtile.widgets_map['prompt']
@@ -139,8 +139,8 @@ keys = [
         lazy.layout.toggle_maximize(),
         desc='toggle window between minimum and maximum sizes'
     ),
-    Key([mod], "Left", lazy.screen.prev_group(), desc="Move focus up"),
-    Key([mod], "Right", lazy.screen.next_group(), desc="Move focus up"),
+    Key([mod], "bracketleft", lazy.screen.prev_group(), desc="Move focus up"),
+    Key([mod], "bracketright", lazy.screen.next_group(), desc="Move focus up"),
 
     Key([mod], "period", lazy.next_screen(), desc='Next monitor'),
 
