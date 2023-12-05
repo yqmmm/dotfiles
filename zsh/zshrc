@@ -20,6 +20,7 @@ fi
 # Customize to your needs...
 export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER='nvim +Man!'
 
 alias gl='lazygit'
 
