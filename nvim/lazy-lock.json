@@ -11,7 +11,7 @@
   "dir-telescope.nvim": { "branch": "main", "commit": "1f3a041f870d1edf9cc64635e79f4b829e755978" },
   "gitsigns.nvim": { "branch": "main", "commit": "dfac1062e4df7dffc3aba410b44a6754002eb38a" },
   "iceberg.vim": { "branch": "master", "commit": "e01ac08c2202e7544531f4d806f6893539da6471" },
-  "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
+  "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
   "lightspeed.nvim": { "branch": "main", "commit": "299eefa6a9e2d881f1194587c573dad619fdb96f" },
   "lsp_signature.nvim": { "branch": "master", "commit": "bdf3dc7bb03edd25c2173e0e31c2fb122052ed23" },
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },

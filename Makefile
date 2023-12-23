@@ -26,7 +26,7 @@ tmux:
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
 
 fzf:
-	[ -d ~/.fzf ] || (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install)
+	[ -d ~/.fzf ] || (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all)
 
 karabiner:
 	mkdir -p ~/.config/
