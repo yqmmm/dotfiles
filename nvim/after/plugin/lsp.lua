@@ -38,16 +38,13 @@ set_keymap('n', '<leader>cf', '<cmd>lua vim.lsp.buf.format { async = true }<CR>'
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local make_on_attach = function(illuminate)
+local make_on_attach = function()
   return function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     require "lsp_signature".on_attach()
-    if illuminate then 
-      require 'illuminate'.on_attach(client)
-    end
   end
 end
 
@@ -66,7 +63,7 @@ local servers = {
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     autostart = false,
-    on_attach = make_on_attach(true),
+    on_attach = make_on_attach(),
     capabilities = capabilities,
   }
 end
@@ -126,4 +123,3 @@ nvim_lsp.ccls.setup {
   }
 }
 
-vim.g.Illuminate_ftblacklist = "['NvimTree']"

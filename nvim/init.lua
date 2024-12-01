@@ -85,8 +85,8 @@ vim.o.cursorline = true
 -- ===== Colorsheme Settings =====
 
 -- tokyonight.
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_italic_functions = true
+-- vim.g.tokyonight_style = "storm"
+-- vim.g.tokyonight_italic_functions = true
 
 vim.o.termguicolors = true
 
@@ -104,9 +104,9 @@ require('vscode').setup({
     disable_nvimtree_bg = true,
 
     -- Override colors (see ./lua/vscode/colors.lua)
-    color_overrides = {
-        vscTabOther = '#4c4c4c',
-    },
+    -- color_overrides = {
+    --     vscTabOther = '#4c4c4c',
+    -- },
 
     -- Override highlight groups (see ./lua/vscode/theme.lua)
     -- group_overrides = {
@@ -116,9 +116,8 @@ require('vscode').setup({
     -- }
 })
 
--- vim.cmd[[colorscheme PaperColor]]
+vim.cmd[[colorscheme PaperColor]]
 -- vim.cmd[[colorscheme vscode]]
-require('vscode').load()
 
 utils.nnoremap('<leader>ud', '<cmd>Backgroun \'dark\'<cr>')
 utils.nnoremap('<leader>ul', '<cmd>Backgroun \'light\'<cr>')
