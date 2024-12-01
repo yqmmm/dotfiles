@@ -58,14 +58,6 @@ return {
   -- TODO: https://www.reddit.com/r/neovim/comments/ngtukc/is_there_a_plugin_close_to_vs_code_search/
   {'kevinhwang91/nvim-bqf', ft = 'qf'},
 
-  -- File Explorer
-   {
-    'kyazdani42/nvim-tree.lua',
-    dependencies = 'kyazdani42/nvim-web-devicons',
-  },
-
-  'stevearc/oil.nvim',
-
   -- Git
   'tpope/vim-fugitive',
   {
