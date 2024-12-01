@@ -64,6 +64,8 @@ return {
     dependencies = 'kyazdani42/nvim-web-devicons',
   },
 
+  'stevearc/oil.nvim',
+
   -- Git
   'tpope/vim-fugitive',
   {
