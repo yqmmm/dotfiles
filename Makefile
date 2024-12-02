@@ -65,6 +65,7 @@ zsh:
 		rm -f ~/.$$rcfile; \
 		ln -s ~/.dotfiles/zsh/$$rcfile ~/.$$rcfile ; \
 	done
+	[ -f ~/.p10k.zsh ] || ln -s ~/.dotfiles/p10k.zsh ~/.p10k.zsh
 
 git:
 	git config --global user.name "Qianmian Yu"
