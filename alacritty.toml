@@ -4,3 +4,11 @@ normal = { family = "Hasklug Nerd Font Mono", style = "Regular" }
 bold = { family = "Hasklug Nerd Font Mono", style = "Bold" }
 bold_italic = { family = "Hasklug Nerd Font Mono", style = "Bold Italic" }
 
+[window]
+option_as_alt = "Both"
+
+[keyboard]
+bindings = [
+  { key = "i", mods = "Command", chars = "\u001bi" },
+  { key = "o", mods = "Command", chars = "\u001bo" },
+]
