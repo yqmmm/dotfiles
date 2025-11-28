@@ -68,12 +68,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.formatting.black,
-    },
-})
-
 -- Extra features from rust-tools.nvim
 require('rust-tools').setup({
   server = {
@@ -122,4 +116,3 @@ nvim_lsp.ccls.setup {
     multiVersion = 1;
   }
 }
-

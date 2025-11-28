@@ -9,7 +9,6 @@ return {
   -- LSP
   'neovim/nvim-lspconfig',
   'ray-x/lsp_signature.nvim', -- TODO: Try lsp-saga
-  'jose-elias-alvarez/null-ls.nvim',
 
   -- Completion
   'hrsh7th/nvim-cmp', -- Autocompletion plugin
