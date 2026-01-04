@@ -25,6 +25,14 @@ export MANPAGER='nvim +Man!'
 alias gl='lazygit'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+
+[ -f "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"
+
+# Disable Pure renice only inside Codex.
+if [[ -n "${CODEX_HOME:-}" ]]; then
+  prompt_pure_async_renice() { :; }
+fi
+
