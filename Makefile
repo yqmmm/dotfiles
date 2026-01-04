@@ -61,7 +61,7 @@ rofi:
 
 zsh:
 	[ -d ~/.zprezto ] || git clone --recursive https://github.com/sorin-ionescu/prezto.git "$(HOME)/.zprezto"
-	for rcfile in zlogin zlogout zpreztorc zprofile zshev zshrc; do \
+	for rcfile in zlogin zlogout zpreztorc zprofile zshev zshenv zshrc; do \
 		rm -f ~/.$$rcfile; \
 		ln -s ~/.dotfiles/zsh/$$rcfile ~/.$$rcfile ; \
 	done
