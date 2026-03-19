@@ -13,3 +13,5 @@ This is my personal dotfiles that is not expected to work on any others' compute
 [neovim](http://neovim.io): A bless to use with all the Lua, LSP, terminal support.
 
 [alacritty](https://github.com/alacritty/alacritty): Super fast terminal emulator.
+
+[ghostty](https://ghostty.org): GPU-accelerated terminal emulator with native platform integrations.

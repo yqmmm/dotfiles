@@ -2,10 +2,14 @@ all: install
 
 UNAME_S := $(shell uname -s)
 
-install: alacritty nvim tmux
+install: alacritty ghostty nvim tmux
 
 kitty:
 	[ -d ~/.config/kitty/ ] || ln -s $(PWD)/kitty ~/.config/kitty
+
+ghostty:
+	mkdir -p ~/.config/ghostty
+	[ -f ~/.config/ghostty/config ] || ln -s $(PWD)/ghostty/config ~/.config/ghostty/config
 
 alacritty:
 	mkdir -p ~/.config/alacritty
@@ -71,4 +75,4 @@ git:
 	git config --global user.name "Qianmian Yu"
 	git config --global user.email "im.qianmian.yu@gmail.com"
 
-.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty qtile kmonad font zsh
+.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty ghostty qtile kmonad font zsh
