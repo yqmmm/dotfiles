@@ -9,8 +9,5 @@ cursor-opacity = 0.8
 # --- Shell Integration ---
 shell-integration = zsh
 
-# --- Pane Navigation ---
-keybind = alt+h=goto_split:left
-keybind = alt+j=goto_split:down
-keybind = alt+k=goto_split:up
-keybind = alt+l=goto_split:right
+# --- macOS Modifiers ---
+macos-option-as-alt = true
