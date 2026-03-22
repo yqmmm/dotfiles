@@ -15,3 +15,5 @@ This is my personal dotfiles that is not expected to work on any others' compute
 [alacritty](https://github.com/alacritty/alacritty): Super fast terminal emulator.
 
 [ghostty](https://ghostty.org): GPU-accelerated terminal emulator with native platform integrations.
+
+[Zellij](https://zellij.dev): Terminal workspace and multiplexer.

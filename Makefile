@@ -2,7 +2,7 @@ all: install
 
 UNAME_S := $(shell uname -s)
 
-install: alacritty ghostty nvim tmux
+install: alacritty ghostty nvim tmux zellij
 
 kitty:
 	[ -d ~/.config/kitty/ ] || ln -s $(PWD)/kitty ~/.config/kitty
@@ -28,6 +28,10 @@ tmux:
 	mkdir -p ~/.tmux/plugins
 	[ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmux.conf ~/.tmux.conf
+
+zellij:
+	mkdir -p ~/.config/zellij
+	[ -f ~/.config/zellij/config.kdl ] || ln -s $(PWD)/zellij/config.kdl ~/.config/zellij/config.kdl
 
 fzf:
 	[ -d ~/.fzf ] || (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all)
@@ -75,4 +79,4 @@ git:
 	git config --global user.name "Qianmian Yu"
 	git config --global user.email "im.qianmian.yu@gmail.com"
 
-.PHONY: all install alacritty nvim tmux fzf karabiner asdf pythonic kitty ghostty qtile kmonad font zsh
+.PHONY: all install alacritty nvim tmux zellij fzf karabiner asdf pythonic kitty ghostty qtile kmonad font zsh
