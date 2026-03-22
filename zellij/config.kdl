@@ -2,6 +2,13 @@ keybinds clear-defaults=true {
     locked {
         bind "Ctrl f" { SwitchToMode "normal"; }
     }
+    normal {
+        // Mostly old tmux habits
+        bind "c" { NewTab; SwitchToMode "locked"; }
+        bind "v" { NewPane "right"; SwitchToMode "locked"; }
+        bind "," { SwitchToMode "renametab"; TabNameInput 0; }
+        bind "z" { ToggleFocusFullscreen; SwitchToMode "locked"; }
+    }
     pane {
         bind "left" { MoveFocus "left"; }
         bind "down" { MoveFocus "down"; }
