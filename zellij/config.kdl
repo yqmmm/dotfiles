@@ -4,10 +4,13 @@ keybinds clear-defaults=true {
     }
     normal {
         // Mostly old tmux habits
-        bind "c" { NewTab; SwitchToMode "locked"; }
         bind "v" { NewPane "right"; SwitchToMode "locked"; }
-        bind "," { SwitchToMode "renametab"; TabNameInput 0; }
+        bind "s" { NewPane "down"; SwitchToMode "locked"; }
+        bind "S" { NewPane "stacked"; SwitchToMode "locked"; }
+        bind "c" { NewTab; SwitchToMode "locked"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "locked"; }
+        bind "," { SwitchToMode "renametab"; TabNameInput 0; }
+        bind "." { SwitchToMode "renamepane"; PaneNameInput 0; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
@@ -199,7 +202,7 @@ keybinds clear-defaults=true {
         bind "p" { SwitchToMode "pane"; }
     }
     shared_among "normal" "resize" "search" "move" "prompt" "tmux" {
-        bind "s" { SwitchToMode "scroll"; }
+        bind "f" { SwitchToMode "scroll"; }
     }
     shared_except "locked" "resize" "pane" "tab" "entersearch" "renametab" "renamepane" {
         bind "r" { SwitchToMode "resize"; }
