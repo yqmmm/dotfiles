@@ -37,3 +37,4 @@ if [[ -n "${CODEX_HOME:-}" ]]; then
 fi
 
 source $HOME/.dotfiles/shell/misc.sh
+[ -f "$HOME/.dotfiles/shell/zellij.sh" ] && source "$HOME/.dotfiles/shell/zellij.sh"
