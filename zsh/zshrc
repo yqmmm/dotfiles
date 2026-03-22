@@ -36,3 +36,4 @@ if [[ -n "${CODEX_HOME:-}" ]]; then
   prompt_pure_async_renice() { :; }
 fi
 
+source $HOME/.dotfiles/shell/misc.sh
