@@ -8,6 +8,13 @@ keybinds clear-defaults=true {
         bind "s" { NewPane "down"; SwitchToMode "locked"; }
         bind "S" { NewPane "stacked"; SwitchToMode "locked"; }
         bind "c" { NewTab; SwitchToMode "locked"; }
+        bind "e" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "locked"
+        }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "locked"; }
         bind "," { SwitchToMode "renametab"; TabNameInput 0; }
         bind "." { SwitchToMode "renamepane"; PaneNameInput 0; }
