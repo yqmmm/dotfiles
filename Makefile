@@ -2,7 +2,7 @@ all: install
 
 UNAME_S := $(shell uname -s)
 
-install: alacritty ghostty nvim tmux zellij
+install: alacritty ghostty nvim tmux zellij mpv
 
 kitty:
 	[ -d ~/.config/kitty/ ] || ln -s $(PWD)/kitty ~/.config/kitty
@@ -32,6 +32,10 @@ tmux:
 zellij:
 	mkdir -p ~/.config/zellij
 	[ -f ~/.config/zellij/config.kdl ] || ln -s $(PWD)/zellij/config.kdl ~/.config/zellij/config.kdl
+
+mpv:
+	mkdir -p ~/.config/mpv/script-opts
+	[ -f ~/.config/mpv/script-opts/subs2srs.conf ] || ln -s $(PWD)/mpv/script-opts/subs2srs.conf ~/.config/mpv/script-opts/subs2srs.conf
 
 fzf:
 	[ -d ~/.fzf ] || (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all)
