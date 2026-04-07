@@ -1,5 +1,7 @@
+vim.g.mapleader = " "
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -10,10 +12,25 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 
-vim.g.mapleader = " "
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  defaults = {
+    lazy = true,
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "netrw",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+})
 
 -- Boostrapping packer
 -- local fn = vim.fn
@@ -82,39 +99,7 @@ utils.nnoremap('<leader>cr', '<cmd>let @+ = expand("%")<cr>')
 
 vim.o.cursorline = true
 
--- ===== Colorsheme Settings =====
-
--- tokyonight.
--- vim.g.tokyonight_style = "storm"
--- vim.g.tokyonight_italic_functions = true
-
 vim.o.termguicolors = true
-
-require('vscode').setup({
-    -- Alternatively set style in setup
-    -- style = 'light'
-
-    -- Enable transparent background
-    transparent = true,
-
-    -- Enable italic comment
-    italic_comments = true,
-
-    -- Disable nvim-tree background color
-    disable_nvimtree_bg = true,
-
-    -- Override colors (see ./lua/vscode/colors.lua)
-    -- color_overrides = {
-    --     vscTabOther = '#4c4c4c',
-    -- },
-
-    -- Override highlight groups (see ./lua/vscode/theme.lua)
-    -- group_overrides = {
-    --     -- this supports the same val table as vim.api.nvim_set_hl
-    --     -- use colors from this colorscheme by requiring vscode.colors!
-    --     Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
-    -- }
-})
 
 vim.cmd[[colorscheme PaperColor]]
 -- vim.cmd[[colorscheme vscode]]
@@ -125,18 +110,12 @@ utils.nnoremap('<leader>ul', '<cmd>Backgroun \'light\'<cr>')
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- nvim-autopairs setup
-require('nvim-autopairs').setup{}
-
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.wo.foldenable=false
 
 -- wakatime
-vim.g.wakatime_CLIPath = string.gsub(vim.fn.system('which wakatime-cli'), '[\n\r]', '')
-
--- Comment.nvim
-require('Comment').setup()
+vim.g.wakatime_CLIPath = vim.fn.exepath('wakatime-cli')
 
 -- vim-oscyank
 -- vim.g['oscyank_term'] = 'default'
@@ -144,9 +123,6 @@ utils.noremap('v', '<leader>y', ':OSCYankVisual<CR>')
 -- Yank relative path of current buffer (vimscript)
 -- let @" = expand("%")
 -- :OSCYankReg "
-
--- todo-comments
-require("todo-comments").setup {}
 
 -- impatient.nvim
 -- require('impatient')
@@ -169,5 +145,4 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
   pattern = {"*.hh", "*.cc"},
   command = "set tabstop=2 shiftwidth=2 expandtab",
 })
-
 

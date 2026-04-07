@@ -1,14 +1,29 @@
 return {
   -- File Explorer
-   {
+  {
     'kyazdani42/nvim-tree.lua',
     dependencies = 'kyazdani42/nvim-web-devicons',
+    cmd = { 'NvimTreeToggle', 'NvimTreeFindFile' },
+    keys = {
+      { '<C-n>', ':NvimTreeToggle<CR>' },
+      { '<leader>n', ':NvimTreeFindFile<CR>' },
+    },
+    config = function()
+      require('nvim-tree').setup {}
+    end,
   },
 
   {
     'stevearc/oil.nvim',
+    cmd = 'Oil',
+    keys = {
+      { '-', '<CMD>Oil<CR>', desc = "Open parent directory" },
+    },
     config = function()
       require("oil").setup({
+        -- Oil is lazy-loaded here, so don't try to replace an already-open
+        -- directory buffer during setup.
+        default_file_explorer = false,
         columns = {
           "icon",
           -- "permissions",
@@ -34,8 +49,6 @@ return {
           ["g\\"] = "actions.toggle_trash",
         },
       })
-
-    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end,
-  }
+  },
 }
