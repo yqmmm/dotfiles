@@ -76,9 +76,6 @@ vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.wo.foldenable=false
 
--- wakatime
-vim.g.wakatime_CLIPath = vim.fn.exepath('wakatime-cli')
-
 -- vim-oscyank
 -- vim.g['oscyank_term'] = 'default'
 vim.keymap.set('v', '<leader>y', ':OSCYankVisual<CR>')
