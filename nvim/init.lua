@@ -16,57 +16,35 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
--- Boostrapping packer
--- local fn = vim.fn
--- local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
--- if fn.empty(fn.glob(install_path)) > 0 then
---   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
--- end
-
--- Define utils functions
-local utils = {}
-
-function utils.noremap(type, key, value, opts)
-  local options = {noremap = true}
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
-  vim.api.nvim_set_keymap(type,key,value, options)
-end
-
-function utils.nnoremap(key, value, opts)
-  utils.noremap('n', key, value, opts)
-end
-
 -- ====Real Configuration====
 vim.wo.number = true
 -- Search
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.api.nvim_set_keymap('n', '/', '/\\v', { noremap = true })
+vim.keymap.set('n', '/', '/\\v')
 -- Tabs
 vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 -- Left Key & Right Key
-utils.noremap('v', '<left>', '^')
-utils.noremap('v', '<right>', '$')
-utils.noremap('n', '<left>', '^')
-utils.noremap('n', '<right>', '$')
+vim.keymap.set('v', '<left>', '^')
+vim.keymap.set('v', '<right>', '$')
+vim.keymap.set('n', '<left>', '^')
+vim.keymap.set('n', '<right>', '$')
 -- Switch Tab
-utils.nnoremap('<leader>i', 'gT<CR>')
-utils.nnoremap('<leader>o', 'gt<CR>')
+vim.keymap.set('n', '<leader>i', 'gT<CR>')
+vim.keymap.set('n', '<leader>o', 'gt<CR>')
 -- Switch Panes
-utils.nnoremap('<S-Left>', '<C-w>h')
-utils.nnoremap('<S-Right>', '<C-w>l')
-utils.nnoremap('<S-Down>', '<C-w>j')
-utils.nnoremap('<S-Up>', '<C-w>k')
-utils.nnoremap('<A-=>', '<C-w>5+')
-utils.nnoremap('<A-->', '<C-w>5-')
-utils.nnoremap('<A-,>', '<C-w>5<')
-utils.nnoremap('<A-.>', '<C-w>5>')
+vim.keymap.set('n', '<S-Left>', '<C-w>h')
+vim.keymap.set('n', '<S-Right>', '<C-w>l')
+vim.keymap.set('n', '<S-Down>', '<C-w>j')
+vim.keymap.set('n', '<S-Up>', '<C-w>k')
+vim.keymap.set('n', '<A-=>', '<C-w>5+')
+vim.keymap.set('n', '<A-->', '<C-w>5-')
+vim.keymap.set('n', '<A-,>', '<C-w>5<')
+vim.keymap.set('n', '<A-.>', '<C-w>5>')
 -- Clipboard
-utils.noremap('v', '<leader>p', '"*p')
+vim.keymap.set('v', '<leader>p', '"*p')
 -- Split in reasonable positions
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -75,11 +53,11 @@ vim.g.updatetime = 100
 vim.o.inccommand = 'split'
 -- vim.o.scrolloff=5 -- save 5 lines when zt and zb
 
-utils.nnoremap('<leader>j', '<c-^>')
+vim.keymap.set('n', '<leader>j', '<c-^>')
 
-utils.noremap('v', '//', "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
-utils.nnoremap('<leader>cy', '<cmd>%y+<cr>')
-utils.nnoremap('<leader>cr', '<cmd>let @+ = expand("%")<cr>')
+vim.keymap.set('v', '//', "y/\\V<C-R>=escape(@\",'/\\')<CR><CR>")
+vim.keymap.set('n', '<leader>cy', '<cmd>%y+<cr>')
+vim.keymap.set('n', '<leader>cr', '<cmd>let @+ = expand("%")<cr>')
 
 vim.o.cursorline = true
 
@@ -88,8 +66,8 @@ vim.o.termguicolors = true
 vim.cmd[[colorscheme PaperColor]]
 -- vim.cmd[[colorscheme vscode]]
 
-utils.nnoremap('<leader>ud', '<cmd>Backgroun \'dark\'<cr>')
-utils.nnoremap('<leader>ul', '<cmd>Backgroun \'light\'<cr>')
+vim.keymap.set('n', '<leader>ud', '<cmd>Backgroun \'dark\'<cr>')
+vim.keymap.set('n', '<leader>ul', '<cmd>Backgroun \'light\'<cr>')
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -103,7 +81,7 @@ vim.g.wakatime_CLIPath = vim.fn.exepath('wakatime-cli')
 
 -- vim-oscyank
 -- vim.g['oscyank_term'] = 'default'
-utils.noremap('v', '<leader>y', ':OSCYankVisual<CR>')
+vim.keymap.set('v', '<leader>y', ':OSCYankVisual<CR>')
 -- Yank relative path of current buffer (vimscript)
 -- let @" = expand("%")
 -- :OSCYankReg "
@@ -112,11 +90,11 @@ utils.noremap('v', '<leader>y', ':OSCYankVisual<CR>')
 -- require('impatient')
 
 -- nvim-spectre
-utils.nnoremap('<leader>S', ':lua require("spectre").open()<CR>')
+vim.keymap.set('n', '<leader>S', ':lua require("spectre").open()<CR>')
 
 -- search current word
-utils.nnoremap('<leader>sw', ':lua require("spectre").open_visual({select_word=true})<CR>')
-utils.noremap('v', '<leader>s', ':lua require("spectre").open_visual()<CR>')
+vim.keymap.set('n', '<leader>sw', ':lua require("spectre").open_visual({select_word=true})<CR>')
+vim.keymap.set('v', '<leader>s', ':lua require("spectre").open_visual()<CR>')
 -- search in current file
 -- nnoremap <leader>sp viw:lua require('spectre').open_file_search()<cr>
 
