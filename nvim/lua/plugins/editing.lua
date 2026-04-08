@@ -45,7 +45,10 @@ return {
     event = 'VeryLazy',
     config = true,
   },
-  'tpope/vim-surround',
+  {
+    'tpope/vim-surround',
+    event = 'VeryLazy',
+  },
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',

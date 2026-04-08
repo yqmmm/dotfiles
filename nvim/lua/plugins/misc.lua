@@ -1,5 +1,9 @@
 return {
   {
+    'yqmmm/color-memoize.nvim',
+    lazy = true,
+  },
+  {
     'github/copilot.vim',
     event = 'InsertEnter',
     init = function()
@@ -35,7 +39,10 @@ return {
       })
     end,
   },
-  'gcmt/taboo.vim',
+  {
+    'gcmt/taboo.vim',
+    event = 'VeryLazy',
+  },
   {
     'ojroques/vim-oscyank',
     keys = {
@@ -56,5 +63,8 @@ return {
       vim.keymap.set('n', '<leader>gl', ':Lazygit<CR>')
     end,
   },
-  'uga-rosa/utf8.nvim',
+  {
+    'uga-rosa/utf8.nvim',
+    lazy = true,
+  },
 }

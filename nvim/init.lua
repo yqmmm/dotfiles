@@ -14,23 +14,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", {
-  defaults = {
-    lazy = true,
-  },
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "netrw",
-        "netrwPlugin",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
-  },
-})
+require("lazy").setup("plugins")
 
 -- Boostrapping packer
 -- local fn = vim.fn
@@ -145,4 +129,3 @@ vim.api.nvim_create_autocmd({"BufEnter"}, {
   pattern = {"*.hh", "*.cc"},
   command = "set tabstop=2 shiftwidth=2 expandtab",
 })
-
