@@ -7,8 +7,6 @@ return {
       'ray-x/lsp_signature.nvim',
     },
     config = function()
-      local nvim_lsp = require('lspconfig')
-
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
@@ -48,14 +46,14 @@ return {
       }
 
       for _, lsp in ipairs(servers) do
-        nvim_lsp[lsp].setup {
+        vim.lsp.config(lsp, {
           autostart = false,
           on_attach = on_attach,
           capabilities = capabilities,
-        }
+        })
       end
 
-      nvim_lsp.ccls.setup {
+      vim.lsp.config('ccls', {
         autostart = false,
         on_attach = on_attach,
         capabilities = capabilities,
@@ -63,7 +61,7 @@ return {
         index = {
           multiVersion = 1,
         },
-      }
+      })
     end,
   },
   {
