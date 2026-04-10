@@ -26,7 +26,6 @@ vim.keymap.set('n', '<A-.>', '<C-w>5>')
 vim.keymap.set('v', '<leader>p', '"*p')
 vim.keymap.set('n', '<leader>cy', '<cmd>%y+<cr>')
 vim.keymap.set('n', '<leader>cr', '<cmd>let @+ = expand("%")<cr>')
-vim.keymap.set('v', '<leader>y', ':OSCYankVisual<CR>')
 
 -- Buffer navigation
 vim.keymap.set('n', '<leader>j', '<c-^>')
