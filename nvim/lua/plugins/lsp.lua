@@ -4,7 +4,6 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
-      'ray-x/lsp_signature.nvim',
     },
     config = function()
       local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -16,7 +15,6 @@ return {
       vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
       vim.keymap.set('n', 'gvd', ':only<CR>:vsplit<CR>gd', opts)
       vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-      vim.keymap.set('n', 'gx', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
       vim.keymap.set('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
       vim.keymap.set('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
       vim.keymap.set('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -32,7 +30,6 @@ return {
 
       local function on_attach(_, bufnr)
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-        require('lsp_signature').on_attach({}, bufnr)
       end
 
       local servers = {
@@ -78,7 +75,6 @@ return {
           on_attach = function(_, bufnr)
             local opts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set('n', '<leader>cg', '<cmd>RustRunnables<CR>', opts)
-            require('lsp_signature').on_attach({}, bufnr)
           end,
           capabilities = capabilities,
           settings = {
