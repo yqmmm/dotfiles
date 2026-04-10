@@ -45,9 +45,8 @@ return {
   },
   {
     'ojroques/vim-oscyank',
-    cmd = { 'OSCYank', 'OSCYankVisual' },
     keys = {
-      { '<leader>y', '<cmd>OSCYankVisual<CR>', mode = 'v' },
+      { '<leader>y', '<Plug>OSCYankVisual', mode = 'x' },
     },
   },
   'christoomey/vim-tmux-navigator',
