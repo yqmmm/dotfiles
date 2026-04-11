@@ -146,6 +146,11 @@ keybinds clear-defaults=true {
         bind "Alt j" { MoveFocus "down"; SwitchToMode "locked"; }
         bind "Alt k" { MoveFocus "up"; SwitchToMode "locked"; }
         bind "Alt l" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
+        // Leave scrollback after moving focus so the next pane is immediately usable.
+        bind "Ctrl h" { MoveFocus "left"; SwitchToMode "locked"; }
+        bind "Ctrl j" { MoveFocus "down"; SwitchToMode "locked"; }
+        bind "Ctrl k" { MoveFocus "up"; SwitchToMode "locked"; }
+        bind "Ctrl l" { MoveFocus "right"; SwitchToMode "locked"; }
         bind "s" { SwitchToMode "normal"; }
     }
     search {
