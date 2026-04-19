@@ -58,9 +58,6 @@ return {
       vim.g.floaterm_height = 0.95
       vim.g.floaterm_borderchars = '        '
       vim.g.floaterm_title = ''
-
-      vim.api.nvim_create_user_command('Lazygit', 'FloatermNew lazygit', {})
-      vim.keymap.set('n', '<leader>gl', ':Lazygit<CR>')
     end,
   },
   {

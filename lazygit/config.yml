@@ -1,0 +1,13 @@
+os:
+  edit: >
+    [ -z "$NVIM" ] &&
+    (nvim -- {{filename}}) ||
+    nvim --server "$NVIM" --remote-send "<C-\><C-N>:q<CR>:edit {{filename}}<CR>"
+  editAtLine: >
+    [ -z "$NVIM" ] &&
+    (nvim +{{line}} -- {{filename}}) ||
+    nvim --server "$NVIM" --remote-send "<C-\><C-N>:q<CR>:edit {{filename}}<CR>:{{line}}<CR>"
+  openDirInEditor: >
+    [ -z "$NVIM" ] &&
+    (nvim -- {{dir}}) ||
+    nvim --server "$NVIM" --remote-send "<C-\><C-N>:q<CR>:edit {{dir}}<CR>"

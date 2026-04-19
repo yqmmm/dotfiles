@@ -57,4 +57,29 @@ return {
     },
     dependencies = 'nvim-lua/plenary.nvim',
   },
+  {
+    'kdheepak/lazygit.nvim',
+    cmd = {
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
+    },
+    keys = {
+      {
+        '<leader>gl',
+        '<cmd>LazyGit<CR>',
+        desc = 'LazyGit',
+      },
+    },
+    dependencies = 'nvim-lua/plenary.nvim',
+    init = function()
+      -- lazygit.nvim reads these globals before loading the plugin.
+      vim.g.lazygit_floating_window_scaling_factor = 0.95
+      vim.g.lazygit_floating_window_border_chars = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' }
+      vim.g.lazygit_use_custom_config_file_path = 1
+      vim.g.lazygit_config_file_path = vim.fn.expand('~/.dotfiles/lazygit/config.yml')
+    end,
+  },
 }
