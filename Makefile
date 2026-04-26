@@ -34,7 +34,10 @@ zellij:
 	[ -f ~/.config/zellij/config.kdl ] || ln -s $(PWD)/zellij/config.kdl ~/.config/zellij/config.kdl
 
 mpv:
-	mkdir -p ~/.config/mpv/script-opts
+	mkdir -p ~/.config/mpv/scripts ~/.config/mpv/script-opts
+	[ -f ~/.config/mpv/mpv.conf ] || ln -s $(PWD)/mpv/mpv.conf ~/.config/mpv/mpv.conf
+	[ -f ~/.config/mpv/scripts/auto-secondary-sub.lua ] || ln -s $(PWD)/mpv/scripts/auto-secondary-sub.lua ~/.config/mpv/scripts/auto-secondary-sub.lua
+	[ -f ~/.config/mpv/input.conf ] || ln -s $(PWD)/mpv/input.conf ~/.config/mpv/input.conf
 	[ -f ~/.config/mpv/script-opts/subs2srs.conf ] || ln -s $(PWD)/mpv/script-opts/subs2srs.conf ~/.config/mpv/script-opts/subs2srs.conf
 
 fzf:
