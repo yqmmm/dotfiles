@@ -11,6 +11,7 @@ vim.keymap.set('n', '<right>', '$')
 -- Tab navigation
 vim.keymap.set('n', '<leader>i', 'gT<CR>')
 vim.keymap.set('n', '<leader>o', 'gt<CR>')
+vim.keymap.set('n', '<leader>to', '<cmd>tabonly<cr>')
 
 -- Window navigation and resizing
 vim.keymap.set('n', '<S-Left>', '<C-w>h')
