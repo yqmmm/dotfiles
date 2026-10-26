@@ -17,3 +17,15 @@ This is my personal dotfiles that is not expected to work on any others' compute
 [ghostty](https://ghostty.org): GPU-accelerated terminal emulator with native platform integrations.
 
 [Zellij](https://zellij.dev): Terminal workspace and multiplexer.
+
+## Agent skills
+
+Portable skills live in `skills/<name>/`, with a `SKILL.md` entry point and optional scripts and references. Keep their source here so other agents can reuse the same files.
+
+Install user-level discovery links with:
+
+```sh
+make -C "$HOME/.dotfiles" skills
+```
+
+This creates `~/.agents/skills/<name>` symlinks without replacing existing files or directories. `make install` also includes this step. Agents that scan this location, including Codex, can discover the skills; other agents can link their own skill directories to the same source or read `SKILL.md` directly.

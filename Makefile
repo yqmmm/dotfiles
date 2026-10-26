@@ -2,7 +2,22 @@ all: install
 
 UNAME_S := $(shell uname -s)
 
-install: alacritty ghostty nvim tmux zellij mpv
+DOTFILES_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+
+install: alacritty ghostty nvim tmux zellij mpv skills
+
+skills:
+	@mkdir -p "$(HOME)/.agents/skills"
+	@for skill in "$(DOTFILES_DIR)"/skills/*; do \
+		[ -f "$$skill/SKILL.md" ] || continue; \
+		name=$${skill##*/}; \
+		target="$(HOME)/.agents/skills/$$name"; \
+		if [ -L "$$target" ] && [ "$$(readlink "$$target")" = "$$skill" ]; then continue; fi; \
+		if [ -e "$$target" ] || [ -L "$$target" ]; then \
+			printf 'Refusing to replace existing skill: %s\n' "$$target" >&2; exit 1; \
+		fi; \
+		ln -s "$$skill" "$$target" || exit 1; \
+	done
 
 kitty:
 	[ -d ~/.config/kitty/ ] || ln -s $(PWD)/kitty ~/.config/kitty
@@ -86,4 +101,4 @@ git:
 	git config --global user.name "Qianmian Yu"
 	git config --global user.email "im.qianmian.yu@gmail.com"
 
-.PHONY: all install alacritty nvim tmux zellij fzf karabiner asdf pythonic kitty ghostty qtile kmonad font zsh
+.PHONY: all install skills alacritty nvim tmux zellij fzf karabiner asdf pythonic kitty ghostty qtile kmonad font zsh
