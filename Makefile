@@ -3,16 +3,25 @@ all: install
 UNAME_S := $(shell uname -s)
 
 DOTFILES_DIR := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+AGENT_SKILLS_DIR ?= $(HOME)/code/agent-skills
+AGENT_SKILLS_TARGET ?= $(HOME)/.agents/skills
 
 install: alacritty ghostty nvim tmux zellij mpv skills
 
 skills:
-	@mkdir -p "$(HOME)/.agents/skills"
-	@for skill in "$(DOTFILES_DIR)"/skills/*; do \
+	@[ -d "$(AGENT_SKILLS_DIR)" ] || { printf 'Clone agent-skills into %s first\n' "$(AGENT_SKILLS_DIR)" >&2; exit 1; }
+	@mkdir -p "$(AGENT_SKILLS_TARGET)"
+	@for skill in "$(AGENT_SKILLS_DIR)"/*; do \
 		[ -f "$$skill/SKILL.md" ] || continue; \
 		name=$${skill##*/}; \
-		target="$(HOME)/.agents/skills/$$name"; \
-		if [ -L "$$target" ] && [ "$$(readlink "$$target")" = "$$skill" ]; then continue; fi; \
+		target="$(AGENT_SKILLS_TARGET)/$$name"; \
+		if [ -L "$$target" ]; then \
+			previous=$$(readlink "$$target"); \
+			[ "$$previous" != "$$skill" ] || continue; \
+			if [ "$$previous" = "$(DOTFILES_DIR)/skills/$$name" ]; then \
+				rm "$$target" || exit 1; \
+			else printf 'Refusing to replace existing skill: %s\n' "$$target" >&2; exit 1; fi; \
+		fi; \
 		if [ -e "$$target" ] || [ -L "$$target" ]; then \
 			printf 'Refusing to replace existing skill: %s\n' "$$target" >&2; exit 1; \
 		fi; \

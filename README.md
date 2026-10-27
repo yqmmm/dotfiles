@@ -20,12 +20,18 @@ This is my personal dotfiles that is not expected to work on any others' compute
 
 ## Agent skills
 
-Portable skills live in `skills/<name>/`, with a `SKILL.md` entry point and optional scripts and references. Keep their source here so other agents can reuse the same files.
-
-Install user-level discovery links with:
+Skill source lives in the separate private `agent-skills` repository, normally at `~/code/agent-skills`. This repository manages installation links only.
 
 ```sh
 make -C "$HOME/.dotfiles" skills
 ```
 
-This creates `~/.agents/skills/<name>` symlinks without replacing existing files or directories. `make install` also includes this step. Agents that scan this location, including Codex, can discover the skills; other agents can link their own skill directories to the same source or read `SKILL.md` directly.
+This links each `<name>/SKILL.md` skill into `~/.agents/skills/<name>`. `make install` also includes this step. Re-running it is safe; it upgrades links from the former dotfiles skill location and refuses to replace unrelated files or links.
+
+Override `AGENT_SKILLS_DIR` to use another checkout, or `AGENT_SKILLS_TARGET` to install links for another agent:
+
+```sh
+make -C "$HOME/.dotfiles" skills AGENT_SKILLS_TARGET="$HOME/.claude/skills"
+```
+
+The real skill files remain in `agent-skills`; neither installation path contains a separate copy.
